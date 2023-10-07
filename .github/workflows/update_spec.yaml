@@ -24,7 +24,7 @@ jobs:
       shell: bash
       run: |
         echo ${{ github.head_ref }}
-        echo ${GITHUB_REF#refs/heads/}
+        echo ${GITHUB_REF#refs/}
       id: extract_branch
     - name: Create the specs and update the repo
       working-directory: ./scripts
@@ -32,5 +32,5 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         chmod +x ./create_specs.sh
-        ./create_specs.sh ${{ github.head_ref }}
+        ./create_specs.sh ${GITHUB_REF#refs/}
 
