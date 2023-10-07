@@ -43,6 +43,9 @@ if [ $? -ne 0 ]; then
     is_diff=true
 fi
 
+git status
+git pull
+
 # Commit the changes if there were any, and push to the remote
 if [ $is_diff = true ]; then
     echo "OpenAPI specs updated, committing and pushing to remote"
