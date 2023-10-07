@@ -22,7 +22,7 @@ jobs:
         pip install -r requirements.txt
     - name: Extract branch name
       shell: bash
-      run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+      run: echo {GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}
       id: extract_branch
     - name: Create the specs and update the repo
       working-directory: ./scripts
