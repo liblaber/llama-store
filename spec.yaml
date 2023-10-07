@@ -1,0 +1,717 @@
+openapi: 3.1.0
+info:
+  title: Llama Store API
+  description: "The llama store API! Get details on all your favorite llamas.\n\n\
+    ## To use this API\n\n- You will need to register a user, once done you can request\
+    \ an API token.\n- You can then use your API token to get details about the llamas.\n\
+    \n## User registration\n\nTo register a user, send a POST request to `/user` with\
+    \ the following body:\n    \n```json\n{\n    \"email\": \"<your email>\",\n  \
+    \  \"password\": \"<your password>\"\n}\n```\nThis API has a maximum of 1000 current\
+    \ users. Once this is exceeded, older users will be deleted. If your user is deleted,\
+    \ you will need to register again.\n## Get an API token\n\nTo get an API token,\
+    \ send a POST request to `/user/apitoken` with the following body:\n    \n```json\n\
+    {\n    \"email\": \"<your email>\",\n    \"password\": \"<your password>\"\n}\n\
+    ```\n\nThis will return a token that you can use to authenticate with the API:\n\
+    \n```json\n{\n  \"access_token\": \"<your new token>\",\n  \"token_type\": \"\
+    bearer\"\n}\n```\n\n## Use the API token\n\nTo use the API token, add it to the\
+    \ `Authorization` header of your request:\n\n```\nAuthorization: Bearer <your\
+    \ token>\n```\n\n\n"
+  contact:
+    name: liblab
+    url: https://liblab.com/
+  version: 0.0.1
+servers:
+- url: http://localhost:8000
+  description: Prod
+paths:
+  /llama/{llama_id}/picture:
+    get:
+      tags:
+      - llama-picture
+      summary: Get Llama Picture
+      description: Get a llama's picture by the llama ID. Pictures are in PNG format.
+      operationId: get_llama_picture_by_llama_id
+      security:
+      - Bearer: []
+      parameters:
+      - name: llama_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          description: The ID of the llama to get the picture for
+          examples:
+          - '1'
+          - '2'
+          title: Llama Id
+        description: The ID of the llama to get the picture for
+      responses:
+        '200':
+          description: Llamas
+          content:
+            image/png:
+              schema:
+                format: binary
+                type: string
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+        '404':
+          description: Llama or llama picture not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    post:
+      tags:
+      - llama-picture
+      summary: Create Llama Picture
+      description: Create a picture for a llama. The picture is sent as a PNG as binary
+        data in the body of the request.
+      operationId: create_llama_picture
+      security:
+      - Bearer: []
+      parameters:
+      - name: llama_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          description: The ID of the llama that this picture is for
+          examples:
+          - '1'
+          - '2'
+          title: Llama Id
+        description: The ID of the llama that this picture is for
+      responses:
+        '201':
+          description: Llama picture created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LlamaId'
+        '400':
+          description: The request body is empty
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+        '404':
+          description: Llama not found
+        '409':
+          description: Llama picture already exists
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      requestBody:
+        content:
+          image/png:
+            schema:
+              format: binary
+              type: string
+    put:
+      tags:
+      - llama-picture
+      summary: Update Llama Picture
+      description: "Update a picture for a llama. The picture is sent as a PNG as\
+        \ binary data in the body of the request.\n\nIf the llama does not have a\
+        \ picture, one will be created. If the llama already has a picture,\n it will\
+        \ be overwritten.\nIf the llama does not exist, a 404 will be returned."
+      operationId: update_llama_picture
+      security:
+      - Bearer: []
+      parameters:
+      - name: llama_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          description: The ID of the llama that this picture is for
+          examples:
+          - '1'
+          - '2'
+          title: Llama Id
+        description: The ID of the llama that this picture is for
+      responses:
+        '200':
+          description: Llama picture created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LlamaId'
+        '400':
+          description: The request body is empty
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+        '404':
+          description: Llama not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      requestBody:
+        content:
+          image/png:
+            schema:
+              format: binary
+              type: string
+    delete:
+      tags:
+      - llama-picture
+      summary: Delete Llama Picture
+      description: Delete a llama's picture by ID.
+      operationId: delete_llama_picture
+      security:
+      - Bearer: []
+      parameters:
+      - name: llama_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          description: The ID of the llama to delete the picture for
+          examples:
+          - '1'
+          - '2'
+          title: Llama Id
+        description: The ID of the llama to delete the picture for
+      responses:
+        '204':
+          description: Llama picture deleted successfully
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+        '404':
+          description: Llama or picture not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /llama:
+    get:
+      tags:
+      - llama
+      summary: Get Llamas
+      description: Get all the llamas.
+      operationId: get_llamas
+      responses:
+        '200':
+          description: Llamas
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Llama'
+                type: array
+                title: Response 200 Get Llamas
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - llama
+      summary: Create Llama
+      description: Create a new llama. Llama names must be unique.
+      operationId: create_llama
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LlamaCreate'
+        required: true
+      responses:
+        '201':
+          description: Llama created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Llama'
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+        '409':
+          description: Llama already exists
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - Bearer: []
+  /llama/{llama_id}:
+    get:
+      tags:
+      - llama
+      summary: Get Llama
+      description: Get a llama by ID.
+      operationId: get_llama_by_id
+      security:
+      - Bearer: []
+      parameters:
+      - name: llama_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          description: The llama's ID
+          examples:
+          - '1'
+          - '2'
+          title: Llama Id
+        description: The llama's ID
+      responses:
+        '200':
+          description: Llamas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Llama'
+                type: array
+                items:
+                  $ref: '#/components/schemas/Llama'
+                title: Response 200 Get Llama By Id
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+        '404':
+          description: Llama not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    put:
+      tags:
+      - llama
+      summary: Update Llama
+      description: 'Update a llama. If the llama does not exist, create it.
+
+
+        When updating a llama, the llama name must be unique. If the llama name is
+        not unique, a 409 will be returned.'
+      operationId: update_llama
+      security:
+      - Bearer: []
+      parameters:
+      - name: llama_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          description: The llama's ID
+          examples:
+          - '1'
+          - '2'
+          title: Llama Id
+        description: The llama's ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LlamaCreate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Llama'
+        '201':
+          description: New llama created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Llama'
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+        '409':
+          description: The llama name is already in use
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+    delete:
+      tags:
+      - llama
+      summary: Delete Llama
+      description: Delete a llama. If the llama does not exist, this will return a
+        404.
+      operationId: delete_llama
+      security:
+      - Bearer: []
+      parameters:
+      - name: llama_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          description: The llama's ID
+          examples:
+          - '1'
+          - '2'
+          title: Llama Id
+        description: The llama's ID
+      responses:
+        '204':
+          description: Llama deleted successfully
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+        '404':
+          description: Llama not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /token:
+    post:
+      tags:
+      - token
+      summary: Create Api Token
+      description: 'Create an API token for a user. These tokens expire after 30 minutes.
+
+
+        Once you have this token, you need to pass it to other endpoints in the Authorization
+        header as a Bearer token.'
+      operationId: create_api_token
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APITokenRequest'
+        required: true
+      responses:
+        '201':
+          description: A new API token for the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIToken'
+        '404':
+          description: User not found or the password is invalid
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /user/{email}:
+    get:
+      tags:
+      - user
+      summary: Get User By Email
+      description: 'Get a user by email.
+
+
+        This endpoint will return a 404 if the user does not exist. Otherwise, it
+        will return a 200.'
+      operationId: get_user_by_email
+      security:
+      - Bearer: []
+      parameters:
+      - name: email
+        in: path
+        required: true
+        schema:
+          type: string
+          minLength: 5
+          maxLength: 254
+          pattern: .+\@.+\..+
+          description: The user's email address
+          title: Email
+        description: The user's email address
+      responses:
+        '200':
+          description: User
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          description: Invalid API token
+        '403':
+          description: Not authenticated. Send a valid API token in the Authorization
+            header.
+        '404':
+          description: User not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /user:
+    post:
+      tags:
+      - user
+      summary: Register User
+      description: 'Register a new user.
+
+
+        This endpoint will return a 400 if the user already exists. Otherwise, it
+        will return a 201.'
+      operationId: register_user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+        required: true
+      responses:
+        '201':
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: User already registered
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    APIToken:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+        token_type:
+          type: string
+          title: Token Type
+          default: bearer
+      type: object
+      required:
+      - access_token
+      title: APIToken
+      description: An API token to use for authentication.
+      examples:
+      - access_token: 1234567890abcdef
+        token_type: bearer
+    APITokenRequest:
+      properties:
+        email:
+          type: string
+          maxLength: 254
+          minLength: 5
+          pattern: .+\@.+\..+
+          title: Email
+        password:
+          type: string
+          maxLength: 254
+          minLength: 8
+          title: Password
+      type: object
+      required:
+      - email
+      - password
+      title: APITokenRequest
+      description: A request to get an API token for a given user.
+      examples:
+      - email: noone@example.com
+        password: Password123!
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    Llama:
+      properties:
+        name:
+          type: string
+          title: Name
+        age:
+          type: integer
+          title: Age
+        color:
+          $ref: '#/components/schemas/LlamaColor'
+        rating:
+          type: integer
+          title: Rating
+        id:
+          type: integer
+          title: Id
+      type: object
+      required:
+      - name
+      - age
+      - color
+      - rating
+      - id
+      title: Llama
+      description: A llama, with details of its name, age, color, and rating from
+        1 to 5.
+      examples:
+      - age: 5
+        color: brown
+        id: '1'
+        name: libby the llama
+        rating: 4
+    LlamaColor:
+      type: string
+      enum:
+      - brown
+      - white
+      - black
+      - gray
+      title: LlamaColor
+      description: The color of a llama.
+    LlamaCreate:
+      properties:
+        name:
+          type: string
+          title: Name
+        age:
+          type: integer
+          title: Age
+        color:
+          $ref: '#/components/schemas/LlamaColor'
+        rating:
+          type: integer
+          title: Rating
+      type: object
+      required:
+      - name
+      - age
+      - color
+      - rating
+      title: LlamaCreate
+      description: A new llama for the llama store.
+      examples:
+      - age: 5
+        color: brown
+        name: libby the llama
+        rating: 4
+    LlamaId:
+      properties:
+        id:
+          type: integer
+          title: Id
+      type: object
+      required:
+      - id
+      title: LlamaId
+      description: A llama id.
+      examples:
+      - id: '1'
+    User:
+      properties:
+        email:
+          type: string
+          maxLength: 254
+          minLength: 5
+          pattern: .+\@.+\..+
+          title: Email
+        id:
+          type: integer
+          title: Id
+      type: object
+      required:
+      - email
+      - id
+      title: User
+      description: A user of the llama store
+      examples:
+      - email: noone@example.com
+        id: '1'
+    UserRegistration:
+      properties:
+        email:
+          type: string
+          maxLength: 254
+          minLength: 5
+          pattern: .+\@.+\..+
+          title: Email
+        password:
+          type: string
+          maxLength: 254
+          minLength: 8
+          title: Password
+      type: object
+      required:
+      - email
+      - password
+      title: UserRegistration
+      description: A new user of the llama store.
+      examples:
+      - email: noone@example.com
+        password: Password123!
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+tags:
+- name: llama
+  description: Get the llamas
+- name: llama-picture
+  description: Get the llama pictures
+- name: user
+  description: Register users
+- name: token
+  description: Manage API Tokens
