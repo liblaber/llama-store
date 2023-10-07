@@ -21,7 +21,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Branch name
-      run: echo running on branch ${GITHUB_REF##*/}
+      run: |
+        echo running on branch ${GITHUB_REF}
+        echo running on branch ${GITHUB_REF##*/}
     - name: Create the specs and update the repo
       working-directory: ./scripts
       run: |
