@@ -1,0 +1,29 @@
+name: Update OpenAPI specs
+
+on: [pull_request, workflow_dispatch]
+
+permissions:
+  contents: write
+
+jobs:
+  update-specs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Create the specs and update the repo
+      working-directory: ./scripts
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        chmod +x ./create_specs.sh
+        ./create_specs.sh

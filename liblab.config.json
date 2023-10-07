@@ -1,0 +1,16 @@
+{
+  "sdkName": "llama-store",
+  "specFilePath": "http://localhost:8000/openapi.json",
+  "languages": [
+    "python",
+    "java",
+    "typescript"
+  ],
+  "auth": [
+    "bearer"
+  ],
+  "createDocs": true,
+  "customizations": {
+    "devContainer": true
+  }
+}
