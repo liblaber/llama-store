@@ -43,13 +43,13 @@ if [ $? -ne 0 ]; then
     is_diff=true
 fi
 
+gti status
+
 # Commit the changes if there were any, and push to the remote
 if [ $is_diff = true ]; then
     echo "OpenAPI specs updated, committing and pushing to remote"
     git commit -m "Update OpenAPI specs"
-    exit 1
+    git push origin $1
 else
     echo "OpenAPI specs unchanged, no need to commit or push"
 fi
-
-exit 0
