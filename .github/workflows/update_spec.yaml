@@ -30,7 +30,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         chmod +x ./create_specs.sh
-        ./create_specs.sh
-        if $? == 1
+        ./create_specs.sh || true
+        if [ $? -eq 1 ] 
           git push
 
