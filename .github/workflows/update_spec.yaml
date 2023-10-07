@@ -24,7 +24,7 @@ jobs:
       shell: bash
       run: |
         echo ${{ github.head_ref }}
-        echo ${{ GITHUB_BASE_REF }}
+        echo ${GITHUB_REF#refs/heads/}
       id: extract_branch
     - name: Create the specs and update the repo
       working-directory: ./scripts
