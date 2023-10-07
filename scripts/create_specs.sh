@@ -47,7 +47,7 @@ fi
 if [ $is_diff = true ]; then
     echo "OpenAPI specs updated, committing and pushing to remote"
     git commit -m "Update OpenAPI specs"
-    git push
+    git push origin refs/pull/1/merge
 else
     echo "OpenAPI specs unchanged, no need to commit or push"
 fi
