@@ -43,7 +43,7 @@ if [ $? -ne 0 ]; then
     is_diff=true
 fi
 
-gti status
+git status
 
 # Commit the changes if there were any, and push to the remote
 if [ $is_diff = true ]; then
