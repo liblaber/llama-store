@@ -1,6 +1,6 @@
 # liblab Llama store
 
-![Linting: pylint, Code style: black](https://github.com/liblaber/llama-store/actions/workflows/lint.yml/badge.svg) ![pytest](https://github.com/liblaber/llama-store/actions/workflows/test.yml/badge.svg)
+![Linting: pylint, Code style: black](https://github.com/liblaber/llama-store/workflows/Lint/badge.svg) ![Test with pytest](https://github.com/liblaber/llama-store/workflows/Run%20pytest/badge.svg)![Check spec](https://github.com/liblaber/llama-store/workflows/Update%20OpenAPI%20specs/badge.svg)
 
 ![A llama on a stage by a microphone drawn as a bad cartoon](/img/llama-del-rey.webp)
 
