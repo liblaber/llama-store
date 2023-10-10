@@ -50,12 +50,7 @@
           "200": {
             "description": "Llamas",
             "content": {
-              "image/png": {
-                "schema": {
-                  "format": "binary",
-                  "type": "string"
-                }
-              }
+              "image/png": {}
             }
           },
           "401": {
@@ -147,12 +142,7 @@
         },
         "requestBody": {
           "content": {
-            "image/png": {
-              "schema": {
-                "format": "binary",
-                "type": "string"
-              }
-            }
+            "image/png": {}
           }
         }
       },
@@ -221,12 +211,7 @@
         },
         "requestBody": {
           "content": {
-            "image/png": {
-              "schema": {
-                "format": "binary",
-                "type": "string"
-              }
-            }
+            "image/png": {}
           }
         }
       },

@@ -28,7 +28,7 @@ router = APIRouter(
     status_code=status.HTTP_200_OK,
     responses={
         status.HTTP_200_OK: {
-            "content": {"image/png": {"schema": {"format": "binary", "type": "string"}}},
+            "content": {"image/png": {}},
             "description": "Llamas",
         },
         status.HTTP_401_UNAUTHORIZED: {"description": "Invalid API token"},

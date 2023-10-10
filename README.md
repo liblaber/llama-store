@@ -38,7 +38,7 @@ This will create a database called `sql_app.db` in the [`llama_store/.appdata`](
 | llamas                  | Contains all the llama |
 | llama_picture_locations | Contains the locations on disk of the pictures of the llamas |
 
-The script will also create a folder called [`llama_store/.appdata/llama_store_data/pictures`](/llama_store/.appdata/llama_store_data/pictures) and populate it with pictures of the intial llamas.
+The script will also create a folder called [`llama_store/.appdata/llama_store_data/pictures`](/llama_store/.appdata/llama_store_data/pictures) and populate it with pictures of the initial llamas.
 
 > If you use the dev container, then this step will be run for your automatically.
 
@@ -65,7 +65,7 @@ uvicorn main:app --reload --port 80
 
 ### Run the endpoint as readonly
 
-If you want to run this endpoint with the llamas as readonly (for example when hosting publicly and you don't want nefarious members of the public uploading picutres of llamas), you can set the `ALLOW_WRITE` environment variable to `false`.
+If you want to run this endpoint with the llamas as readonly (for example when hosting publicly and you don't want nefarious members of the public uploading pictures of llamas), you can set the `ALLOW_WRITE` environment variable to `false`.
 
 ### Debug endpoints
 
@@ -176,7 +176,7 @@ The liblab CLI uses a [config file called `liblab.config.json`](https://develope
 ```json
 {
   "sdkName": "llama-store",
-  "specFilePath": "http://localhost:8000/openapi.json",
+  "specFilePath": "spec.json",
   "languages": [
     "python",
     "java",
@@ -187,12 +187,34 @@ The liblab CLI uses a [config file called `liblab.config.json`](https://develope
   ],
   "createDocs": true,
   "customizations": {
-    "devContainer": true
+    "devContainer": true,
+    "license": {
+      "type": "MIT"
+    }
+  },
+  "languageOptions": {
+    "typescript": {
+      "githubRepoName": "llama-store-sdk-typescript",
+      "sdkVersion": "0.0.1"
+    },
+    "python": {
+      "pypiPackageName": "LlamaStore",
+      "githubRepoName": "llama-store-sdk-python",
+      "sdkVersion": "0.0.1"
+    },
+    "java": {
+      "groupId": "com.liblab",
+      "githubRepoName": "llama-store-sdk-java",
+      "sdkVersion": "0.0.1"
+    }
+  },
+  "publishing": {
+    "githubOrg": "liblaber"
   }
 }
 ```
 
-This config file reads the `openapi.json` file from `localhost:8000`. You will need to change the URL or port if you run this elsewhere. SDKs will be generated for Java, Python and TypeScript with a name of `llama-store` (adjust to be language specific, so `llamaStore` in Java and TypeScript). The SDKs will be configured to use bearer tokens for authentication, and will include documentation. The generated SDKs will also be set up with dev containers for VS Code, so you can open the created SDK folder and get going straight away.
+This config file reads the local `spec.json` file. If you want to generate an SDK from a running API, you can change this to the URL of that API. SDKs will be generated for Java, Python and TypeScript with a name of `llama-store` (adjust to be language specific, so `llamaStore` in Java and TypeScript). The SDKs will be configured to use bearer tokens for authentication, and will include documentation. The generated SDKs will also be set up with dev containers for VS Code, so you can open the created SDK folder and get going straight away.
 
 To generate the SDKs, run the following command:
 
@@ -202,7 +224,7 @@ liblab build
 
 The SDKs will be created and downloaded to the `output` folder. You can then use these SDKs in your applications.
 
-SDK docs will also be created, and you will be able to access them online, or downlaod them.
+SDK docs will also be created, and you will be able to access them online, or download them.
 
 ## Build your first app
 
@@ -215,6 +237,7 @@ from llamastore import Llamastore
 from llamastore.services.user import User as UserService, UserRegistrationModel
 from llamastore.services.token import Token as TokenService, ApiTokenRequestModel
 from llamastore.services.llama import Llama as LlamaService, GetLlamasResponseModel
+from llamastore.services.llama_picture import LlamaPicture as LlamaPictureService
 
 # Create an instance of the llama store SDK
 llama_store = Llamastore()
@@ -224,12 +247,12 @@ llama_store = Llamastore()
 user_service: UserService = llama_store.user
 
 # Create the registration object
-user_reqistration = UserRegistrationModel(email="noone@example.com", password="Password123!")
+user_registration = UserRegistrationModel(email="noone@example.com", password="Password123!")
 user = None
 
 # Try to register the user. If the user already exists, a 400 will be thrown
 try:
-    user = user_service.register_user(user_reqistration)
+    user = user_service.register_user(user_registration)
     print("User created")
 except BadRequestException as e:
     if e.status_code == 400:
@@ -242,7 +265,7 @@ except BadRequestException as e:
 token_service: TokenService = llama_store.token
 
 # Create the token request using the same credentials as the user registration
-token_request = ApiTokenRequestModel(email=user_reqistration.email, password=user_reqistration.password)
+token_request = ApiTokenRequestModel(email=user_registration.email, password=user_registration.password)
 
 # Create the token
 token = token_service.create_api_token(token_request)
@@ -262,7 +285,22 @@ results: GetLlamasResponseModel = llamas.get_llamas()
 print("\nLlama names:")
 for llama in results:
     print(llama.name)
+
+# Download all the llama images
+llama_picture_service: LlamaPictureService = llama_store.llama_picture
+
+print("\nDownloading llama images:")
+for llama in results:
+    # Download the image
+    image = llama_picture_service.get_llama_picture_by_llama_id(llama.id)
+
+    # Save the image
+    with open(f"{llama.name}.png", "wb") as f:
+        f.write(image.content)
+        print(f"Downloaded image for {llama.name}")
 ```
+
+You can find this and more examples in the [`sdk-examples`](/sdk-examples) folder.
 
 ## OpenAPI spec
 
