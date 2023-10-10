@@ -39,12 +39,7 @@ router = APIRouter(
     openapi_extra={
         "requestBody": {
             "content": {
-                "image/png": {
-                    "schema": {
-                        "format": "binary",
-                        "type": "string",
-                    },
-                },
+                "image/png": {},
             },
         },
     },
@@ -106,12 +101,7 @@ async def create_llama_picture(
     openapi_extra={
         "requestBody": {
             "content": {
-                "image/png": {
-                    "schema": {
-                        "format": "binary",
-                        "type": "string",
-                    },
-                },
+                "image/png": {},
             },
         },
     },

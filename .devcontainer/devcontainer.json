@@ -15,10 +15,15 @@
 			"userUid": "automatic",
 			"userGid": "automatic"
 		},
-		"ghcr.io/devcontainers-contrib/features/npm-package:1": {
-			"package": "liblab"
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"installDockerBuildx": true,
+			"version": "latest",
+			"dockerDashComposeVersion": "v2"
 		},
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "lts",
+			"nvmVersion": "latest"
+		}
 	},
 	"customizations": {
 		"vscode": {
@@ -27,7 +32,10 @@
 				"GitHub.copilot-chat",
 				"rangav.vscode-thunder-client",
 				"ms-azuretools.vscode-docker",
-				"redhat.vscode-yaml"
+				"redhat.vscode-yaml",
+				"ms-python.black-formatter",
+				"tamasfe.even-better-toml",
+				"streetsidesoftware.code-spell-checker"
 			]
 		}
 	},
@@ -39,7 +47,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install -r requirements.txt && ./scripts/recreate_database.sh",
+	"postCreateCommand": "pip install --upgrade pip && pip3 install -r requirements.txt && ./scripts/recreate_database.sh && npm install -g liblab",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
