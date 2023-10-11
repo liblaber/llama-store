@@ -9,7 +9,7 @@
   "auth": [
     "bearer"
   ],
-  "createDocs": false,
+  "createDocs": true,
   "customizations": {
     "devContainer": true,
     "license": {

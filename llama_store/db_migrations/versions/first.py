@@ -39,7 +39,7 @@ ALL_LLAMAS = [
         "id": 3,
         "name": "Sean the fake Llama",
         "age": 18,
-        "color": "brown",
+        "color": "white",
         "rating": 1,
     },
     {
