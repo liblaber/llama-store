@@ -35,7 +35,7 @@ class UserRegistration(UserBase):
         """
         Validate that the password matches a regex - one uppercase, one lower, one number,
         one special character
-        This is impemented here as a validator, not a regex, as Pydantic doesn't work with
+        This is implemented here as a validator, not a regex, as Pydantic doesn't work with
         look forward/look back regexes (whatever those are)
         """
         assert PASSWORD_REGEX.match(v) is not None, (
