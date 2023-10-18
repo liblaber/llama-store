@@ -750,6 +750,7 @@
             "type": "string",
             "maxLength": 254,
             "minLength": 5,
+            "pattern": ".+\\@.+\\..+",
             "title": "Email"
           },
           "password": {
@@ -900,6 +901,7 @@
             "type": "string",
             "maxLength": 254,
             "minLength": 5,
+            "pattern": ".+\\@.+\\..+",
             "title": "Email"
           },
           "id": {
@@ -927,6 +929,7 @@
             "type": "string",
             "maxLength": 254,
             "minLength": 5,
+            "pattern": ".+\\@.+\\..+",
             "title": "Email"
           },
           "password": {

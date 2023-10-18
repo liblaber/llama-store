@@ -9,8 +9,8 @@ info:
     \  \"password\": \"<your password>\"\n}\n```\nThis API has a maximum of 1000 current\
     \ users. Once this is exceeded, older users will be deleted. If your user is deleted,\
     \ you will need to register again.\n## Get an API token\n\nTo get an API token,\
-    \ send a POST request to `/user/apitoken` with the following body:\n    \n```json\n\
-    {\n    \"email\": \"<your email>\",\n    \"password\": \"<your password>\"\n}\n\
+    \ send a POST request to `/token` with the following body:\n    \n```json\n{\n\
+    \    \"email\": \"<your email>\",\n    \"password\": \"<your password>\"\n}\n\
     ```\n\nThis will return a token that you can use to authenticate with the API:\n\
     \n```json\n{\n  \"access_token\": \"<your new token>\",\n  \"token_type\": \"\
     bearer\"\n}\n```\n\n## Use the API token\n\nTo use the API token, add it to the\
