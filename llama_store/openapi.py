@@ -30,7 +30,7 @@ To register a user, send a POST request to `/user` with the following body:
     + """
 ## Get an API token
 
-To get an API token, send a POST request to `/user/apitoken` with the following body:
+To get an API token, send a POST request to `/token` with the following body:
     
 ```json
 {
