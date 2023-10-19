@@ -3,7 +3,7 @@ Llama models. These are used by the llama endpoints.
 """
 from enum import Enum
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class LlamaColor(str, Enum):
@@ -22,7 +22,7 @@ class LlamaId(BaseModel):
     A llama's ID. This is used as a response model when creating llama pictures.
     """
 
-    id: int
+    id: int = Field(description="The ID of the llama.", examples=[1])
 
     model_config = {
         "json_schema_extra": {
@@ -41,10 +41,25 @@ class LlamaBase(BaseModel):
     A base llama model, shared between create and get requests
     """
 
-    name: str
-    age: int
-    color: LlamaColor
-    rating: int
+    name: str = Field(
+        description="The name of the llama. This must be unique across all llamas.",
+        examples=["libby the llama", "labby the llama"],
+        max_length=100,
+    )
+    age: int = Field(
+        description="The age of the llama in years.",
+        examples=[5, 6, 7],
+    )
+    color: LlamaColor = Field(
+        description="The color of the llama.",
+        examples=["brown", "white", "black", "gray"],
+    )
+    rating: int = Field(
+        description="The rating of the llama from 1 to 5.",
+        examples=[1, 2, 3, 4, 5],
+        ge=1,
+        le=5,
+    )
 
     model_config = {
         "json_schema_extra": {
@@ -73,7 +88,7 @@ class Llama(LlamaBase):
     A llama, with details of it's name, age, color, and rating from 1 to 5.
     """
 
-    id: int
+    id: int = Field(description="The ID of the llama.", examples=[1])
 
     model_config = {
         "json_schema_extra": {
