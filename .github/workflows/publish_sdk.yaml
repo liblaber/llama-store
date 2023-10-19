@@ -24,7 +24,5 @@ jobs:
         run: npm install -g liblab
       - name: Start Build
         run: liblab build --skip-validation --approve-docs
-      - name: Post Build
-        run: liblab post-build
       - name: Create PRs to GitHub repos
         run: liblab pr
