@@ -723,12 +723,20 @@
         "properties": {
           "access_token": {
             "type": "string",
-            "title": "Access Token"
+            "title": "Access Token",
+            "description": "The bearer token to use with the API. Pass this in the Authorization header as a bearer token.",
+            "examples": [
+              "Authorization: Bearer 1234567890abcdef"
+            ]
           },
           "token_type": {
             "type": "string",
             "title": "Token Type",
-            "default": "bearer"
+            "description": "The type of token. This will always be bearer.",
+            "default": "bearer",
+            "examples": [
+              "bearer"
+            ]
           }
         },
         "type": "object",
@@ -751,13 +759,18 @@
             "maxLength": 254,
             "minLength": 5,
             "pattern": ".+\\@.+\\..+",
-            "title": "Email"
+            "title": "Email",
+            "description": "The email address of the user. This must be unique across all users."
           },
           "password": {
             "type": "string",
             "maxLength": 254,
             "minLength": 8,
-            "title": "Password"
+            "title": "Password",
+            "description": "The password of the user. This must be at least 8 characters long, and contain at least one letter, one number, and one special character.",
+            "examples": [
+              "Password123!"
+            ]
           }
         },
         "type": "object",
@@ -791,22 +804,59 @@
         "properties": {
           "name": {
             "type": "string",
-            "title": "Name"
+            "maxLength": 100,
+            "title": "Name",
+            "description": "The name of the llama. This must be unique across all llamas.",
+            "examples": [
+              "libby the llama",
+              "labby the llama"
+            ]
           },
           "age": {
             "type": "integer",
-            "title": "Age"
+            "title": "Age",
+            "description": "The age of the llama in years.",
+            "examples": [
+              5,
+              6,
+              7
+            ]
           },
           "color": {
-            "$ref": "#/components/schemas/LlamaColor"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlamaColor"
+              }
+            ],
+            "description": "The color of the llama.",
+            "examples": [
+              "brown",
+              "white",
+              "black",
+              "gray"
+            ]
           },
           "rating": {
             "type": "integer",
-            "title": "Rating"
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Rating",
+            "description": "The rating of the llama from 1 to 5.",
+            "examples": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
           },
           "id": {
             "type": "integer",
-            "title": "Id"
+            "title": "Id",
+            "description": "The ID of the llama.",
+            "examples": [
+              1
+            ]
           }
         },
         "type": "object",
@@ -844,18 +894,51 @@
         "properties": {
           "name": {
             "type": "string",
-            "title": "Name"
+            "maxLength": 100,
+            "title": "Name",
+            "description": "The name of the llama. This must be unique across all llamas.",
+            "examples": [
+              "libby the llama",
+              "labby the llama"
+            ]
           },
           "age": {
             "type": "integer",
-            "title": "Age"
+            "title": "Age",
+            "description": "The age of the llama in years.",
+            "examples": [
+              5,
+              6,
+              7
+            ]
           },
           "color": {
-            "$ref": "#/components/schemas/LlamaColor"
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/LlamaColor"
+              }
+            ],
+            "description": "The color of the llama.",
+            "examples": [
+              "brown",
+              "white",
+              "black",
+              "gray"
+            ]
           },
           "rating": {
             "type": "integer",
-            "title": "Rating"
+            "maximum": 5.0,
+            "minimum": 1.0,
+            "title": "Rating",
+            "description": "The rating of the llama from 1 to 5.",
+            "examples": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
           }
         },
         "type": "object",
@@ -880,7 +963,11 @@
         "properties": {
           "id": {
             "type": "integer",
-            "title": "Id"
+            "title": "Id",
+            "description": "The ID of the llama.",
+            "examples": [
+              1
+            ]
           }
         },
         "type": "object",
@@ -902,11 +989,18 @@
             "maxLength": 254,
             "minLength": 5,
             "pattern": ".+\\@.+\\..+",
-            "title": "Email"
+            "title": "Email",
+            "description": "The email address of the user. This must be unique across all users."
           },
           "id": {
             "type": "integer",
-            "title": "Id"
+            "title": "Id",
+            "description": "The ID of the user. This is unique across all users.",
+            "examples": [
+              1,
+              2,
+              3
+            ]
           }
         },
         "type": "object",
@@ -930,13 +1024,18 @@
             "maxLength": 254,
             "minLength": 5,
             "pattern": ".+\\@.+\\..+",
-            "title": "Email"
+            "title": "Email",
+            "description": "The email address of the user. This must be unique across all users."
           },
           "password": {
             "type": "string",
             "maxLength": 254,
             "minLength": 8,
-            "title": "Password"
+            "title": "Password",
+            "description": "The password of the user. This must be at least 8 characters long, and contain at least one letter, one number, and one special character.",
+            "examples": [
+              "Password123!"
+            ]
           }
         },
         "type": "object",
