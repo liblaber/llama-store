@@ -47,7 +47,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip install --upgrade pip && pip3 install -r requirements.txt && ./scripts/recreate_database.sh && npm install -g liblab",
+	"postCreateCommand": "./scripts/post_create.sh",
 
 	// Configure tool-specific properties.
 	// "customizations": {},

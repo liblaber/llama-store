@@ -3,6 +3,7 @@
         "appdata",
         "buildx",
         "codespaces",
+        "fastapi",
         "liblab",
         "liblaber",
         "llamastore",
