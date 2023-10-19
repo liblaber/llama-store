@@ -3,13 +3,18 @@
         "appdata",
         "buildx",
         "codespaces",
+        "fastapi",
+        "labby",
         "liblab",
         "liblaber",
+        "Llamapoleon",
         "llamastore",
         "openapi",
+        "Pydantic",
         "pylint",
         "pytest",
         "redoc",
+        "regexes",
         "uvicorn",
         "venv"
     ]

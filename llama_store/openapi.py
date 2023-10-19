@@ -30,7 +30,7 @@ To register a user, send a POST request to `/user` with the following body:
     + """
 ## Get an API token
 
-To get an API token, send a POST request to `/user/apitoken` with the following body:
+To get an API token, send a POST request to `/token` with the following body:
     
 ```json
 {
@@ -69,7 +69,7 @@ def fix_openapi_spec(app: FastAPI) -> None:
     """
     The default OpenAPI spec created by FastAPI has trailing slashes on the server URLs. This function removes them, as this
     is a validation error in the spectral analysis of the OpenAPI spec.
-    See this discussion from the FastAPIO GitHub repo: https://github.com/tiangolo/fastapi/discussions/10309
+    See this discussion from the FastAPI GitHub repo: https://github.com/tiangolo/fastapi/discussions/10309
 
     This also adds bearer auth to the security schemes and the top level security section
     """

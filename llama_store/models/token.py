@@ -3,7 +3,7 @@ User models. These are used by the user endpoints.
 """
 # pylint: disable=duplicate-code
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from models.user import UserRegistration
 
 
@@ -32,8 +32,15 @@ class APIToken(BaseModel):
     This token is used to authenticate requests, and expires after 30 minutes.
     """
 
-    access_token: str
-    token_type: str = "bearer"
+    access_token: str = Field(
+        description="The bearer token to use with the API. Pass this in the Authorization header as a bearer token.",
+        examples=["Authorization: Bearer 1234567890abcdef"],
+    )
+    token_type: str = Field(
+        default="bearer",
+        description="The type of token. This will always be bearer.",
+        examples=["bearer"],
+    )
 
     model_config = {
         "json_schema_extra": {
