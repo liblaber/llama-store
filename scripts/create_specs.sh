@@ -6,10 +6,10 @@
 cd /workspaces/llama-store/llama_store
 
 # Create the read-only specs in JSON and YAML
-python3 export_openapi.py main:app --out ../read-only-spec.json
-python3 export_openapi.py main:app --out ../read-only-spec.yaml
+python3 export_openapi.py main:app --out /workspaces/llama-store/read-only-spec.json
+python3 export_openapi.py main:app --out /workspaces/llama-store/read-only-spec.yaml
 
 # Create the read/write specs
 export ALLOW_WRITE=true
-python3 export_openapi.py main:app --out ../spec.json
-python3 export_openapi.py main:app --out ../spec.yaml
+python3 export_openapi.py main:app --out /workspaces/llama-store/spec.json
+python3 export_openapi.py main:app --out /workspaces/llama-store/spec.yaml
