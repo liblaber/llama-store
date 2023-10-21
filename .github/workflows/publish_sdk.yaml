@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'spec.json'
+      - 'liblab.config.json'
   workflow_dispatch:
 
 jobs:
