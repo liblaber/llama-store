@@ -71,11 +71,17 @@ for llama in results:
 llama_picture_service: LlamaPictureService = llama_store.llama_picture
 
 print("\nDownloading llama images:")
+
+# Create a pics directory if it doesn't exist
+import os
+if not os.path.exists("pics"):
+    os.makedirs("pics")
+
 for llama in results:
     # Download the image
     image = llama_picture_service.get_llama_picture_by_llama_id(llama.id)
 
     # Save the image
-    with open(f"{llama.name}.png", "wb") as f:
+    with open(f"./pics/{llama.name}.png", "wb") as f:
         f.write(image.content)
         print(f"Downloaded image for {llama.name}")

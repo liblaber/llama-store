@@ -12,6 +12,7 @@
         "openapi",
         "Pydantic",
         "pylint",
+        "pypi",
         "pytest",
         "redoc",
         "regexes",

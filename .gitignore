@@ -169,3 +169,15 @@ llama_store/.appdata/llama_store_data/pictures/*.png
 # liblab files
 output/
 api-schema-validation.log
+
+# NPM stuff
+*-debug.log
+*-error.log
+/.nyc_output
+/dist
+/lib
+yarn.lock
+/tmp
+node_modules
+
+sdk-examples/python/pics

@@ -2,14 +2,14 @@
   "sdkName": "llama-store",
   "specFilePath": "spec.json",
   "languages": [
+    "typescript",
     "python",
-    "java",
-    "typescript"
+    "java"
   ],
   "auth": [
     "bearer"
   ],
-  "createDocs": true,
+  "createDocs": false,
   "customizations": {
     "devContainer": true,
     "license": {
@@ -18,6 +18,8 @@
   },
   "languageOptions": {
     "typescript": {
+      "bundle": true,
+      "exportClassDefault": true,
       "githubRepoName": "llama-store-sdk-typescript",
       "sdkVersion": "0.0.1"
     },
