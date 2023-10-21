@@ -21,10 +21,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: Check if specs have changed
-      working-directory: ./scripts
       run: |
-        ./create_specs.sh
-        ./check_specs.sh
+        ./scripts/create_specs.sh
+        ./scripts/check_specs.sh
 
         exit_code=$?
         
