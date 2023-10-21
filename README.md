@@ -226,81 +226,97 @@ The SDKs will be created and downloaded to the `output` folder. You can then use
 
 SDK docs will also be created, and you will be able to access them online, or download them.
 
-## Build your first app
+### Pre-built SDKs
 
-Once you have the SDK ready, you can write an app against it! For example, for a simple Python app that creates a user, gets an access token, then lists all the llamas by name, use the following code:
+You can find pre-built SDKs in the following GitHub repos:
 
-```python
-from http_exceptions.client_exceptions import BadRequestException
+| Language   | Repo |
+| ---------- | ---- |
+| Python     | [llama-store-sdk-python](https://github.com/liblaber/llama-store-sdk-python) |
+| Java       | [llama-store-sdk-java](https://github.com/liblaber/llama-store-sdk-java) |
+| TypeScript | [llama-store-sdk-typescript](https://github.com/liblaber/llama-store-sdk-typescript) |
 
-from llamastore import Llamastore
-from llamastore.services.user import User as UserService, UserRegistrationModel
-from llamastore.services.token import Token as TokenService, ApiTokenRequestModel
-from llamastore.services.llama import Llama as LlamaService, GetLlamasResponseModel
-from llamastore.services.llama_picture import LlamaPicture as LlamaPictureService
+## Run the SDK examples
 
-# Create an instance of the llama store SDK
-llama_store = Llamastore()
+There are SDK examples for TypeScript and Python in the [`sdk-examples`](./sdk-examples) folder.
 
-# Create a user
-# For this we can use the user service
-user_service: UserService = llama_store.user
+Before running these examples, you will need to have the llama store running with a clean database. For best results, use the dev container in this repo:
 
-# Create the registration object
-user_registration = UserRegistrationModel(email="noone@example.com", password="Password123!")
-user = None
+1. Ensure you have Docker running
+1. Ensure you have the VS Code remote development extension pack installed
+1. Open this repo in VS Code, and when prompted re-open in the container
 
-# Try to register the user. If the user already exists, a 400 will be thrown
-try:
-    user = user_service.register_user(user_registration)
-    print("User created")
-except BadRequestException as e:
-    if e.status_code == 400:
-        print("User already exists - user won't be created")
-    else:
-        raise e
+This will install everything you need.
 
-# Create an access token
-# For this we can use the token service
-token_service: TokenService = llama_store.token
+Next you will need to build the SDKs:
 
-# Create the token request using the same credentials as the user registration
-token_request = ApiTokenRequestModel(email=user_registration.email, password=user_registration.password)
+1. Run `liblab login` to login (the liblab CLI is installed as part of this dev container).
+1. Run `liblab build` from the root of this repo. This will build against a saved version of the spec.
 
-# Create the token
-token = token_service.create_api_token(token_request)
-print("Token created")
+Next, you need to launch the Llama store:
 
-# Now we have the token we can set it at the SDK level so we never have to worry about it again
-llama_store.set_access_token(token.access_token)
+1. From a terminal, run:
 
-# Get all the llamas
-# For this we can use the llama service
-llamas: LlamaService = llama_store.llama
+    ```bash
+    ./scripts/start_llama_store.sh
+    ```
 
-# Get the llamas
-results: GetLlamasResponseModel = llamas.get_llamas()
+    This will reset the llama store database, then launch the API on port 8000.
 
-# Print the llama names
-print("\nLlama names:")
-for llama in results:
-    print(llama.name)
+Once you have done this, you can run the examples. You will need to create a new terminal to do this.
 
-# Download all the llama images
-llama_picture_service: LlamaPictureService = llama_store.llama_picture
+### TypeScript
 
-print("\nDownloading llama images:")
-for llama in results:
-    # Download the image
-    image = llama_picture_service.get_llama_picture_by_llama_id(llama.id)
+To run the TypeScript examples, navigate to the [`sdk-examples/typescript`](./sdk-examples/typescript) folder.
 
-    # Save the image
-    with open(f"{llama.name}.png", "wb") as f:
-        f.write(image.content)
-        print(f"Downloaded image for {llama.name}")
-```
+1. Build the SDK with the following command from that folder:
 
-You can find this and more examples in the [`sdk-examples`](/sdk-examples) folder.
+    ```bash
+    npm run setup
+    ```
+1. Run the get llamas demo with the following command:
+
+    ```bash
+    npm run get-llamas
+    ```
+
+    This will create a user, generate an API token, and print out a list of llamas. This demo shows the ability to call services on the SDK, set an API token once, and use that for all subsequent calls.
+  
+1. Run the create llamas demo with the following command:
+
+    ```bash
+    npm run create-llamas
+    ```
+
+    This will create a user, generate an API token, and create a llama.
+
+### Python
+
+To run the Python examples, navigate to the [`sdk-examples/python`](./sdk-examples/python) folder.
+
+1. Build and install the Python SDK with the following command from that folder:
+
+    ```bash
+    ./setup-python.sh
+    ```
+
+    This assumes you are running in a dev container as it doesn't create a virtual environment. If you plan to run this locally, you should create and activate a virtual environment first.
+  
+1. Run the get llamas demo with the following command:
+
+    ```bash
+    python get_llamas.py
+    ```
+
+    This will create a user, generate an API token, and print out a list of llamas. It will also download pictures for all the llamas into the `pics` folder. This demo shows the ability to call services on the SDK, set an API token once, and use that for all subsequent calls.
+
+1. Run the create llamas demo with the following command:
+
+    ```bash
+    python create_llamas.py
+    ```
+
+    This will create a user, generate an API token, and create a llama, uploading a picture.
 
 ## OpenAPI spec
 

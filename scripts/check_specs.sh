@@ -3,7 +3,7 @@
 # The read-only specs are created first, then the read/write specs
 
 # Change to the llama store directory
-cd ..
+cd /workspaces/llama-store
 
 git diff --exit-code --no-patch read-only-spec.json
 if [ $? -ne 0 ]; then

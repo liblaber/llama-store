@@ -3,7 +3,7 @@
 # The read-only specs are created first, then the read/write specs
 
 # Change to the llama store directory
-cd ../llama_store
+cd /workspaces/llama-store/llama_store
 
 # Create the read-only specs in JSON and YAML
 python3 export_openapi.py main:app --out ../read-only-spec.json

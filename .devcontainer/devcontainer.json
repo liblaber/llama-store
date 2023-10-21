@@ -16,12 +16,12 @@
 			"userGid": "automatic"
 		},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {
-			"installDockerBuildx": true,
+						"installDockerBuildx": true,
 			"version": "latest",
 			"dockerDashComposeVersion": "v2"
 		},
 		"ghcr.io/devcontainers/features/node:1": {
-			"version": "lts",
+						"version": "lts",
 			"nvmVersion": "latest"
 		}
 	},

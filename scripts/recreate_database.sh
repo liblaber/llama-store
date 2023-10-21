@@ -1,5 +1,5 @@
 # Desc: Recreates the database and deletes all the pictures
-cd llama_store
+cd /workspaces/llama-store/llama_store
 
 # Delete the llama pictures
 rm .appdata/llama_store_data/pictures/*

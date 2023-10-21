@@ -1,0 +1,20 @@
+{
+  "name": "llamastore-example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "llamastore": "file:../../output/typescript"
+  },
+  "scripts": {
+    "setup": "npm --prefix ../../output/typescript install && npm --prefix ../../output/typescript run build && npm install",
+    "start": "tsc && node -r dotenv/config dist/index.js",
+    "get-llamas": "tsc && node -r dotenv/config dist/get_llamas.js",
+    "create-llama": "tsc && node -r dotenv/config dist/create_llama.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "4.8.4",
+    "dotenv": "^8.2.0"
+  }
+}
