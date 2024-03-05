@@ -18,9 +18,9 @@ be in the same directory as this script.
 from http_exceptions.client_exceptions import BadRequestException
 
 from llamastore import Llamastore
-from llamastore.services.user import User as UserService, UserRegistrationModel
-from llamastore.services.token import Token as TokenService, ApiTokenRequestModel
-from llamastore.services.llama import Llama as LlamaService, LlamaCreateModel
+from llamastore.services.user import User as UserService, RegisterUserRequestModel
+from llamastore.services.token import Token as TokenService, CreateApiTokenRequestModel
+from llamastore.services.llama import Llama as LlamaService, CreateLlamaRequestModel
 from llamastore.services.llama_picture import LlamaPicture as LlamaPictureService
 
 # Create an instance of the llama store SDK
@@ -31,7 +31,7 @@ llama_store = Llamastore()
 user_service: UserService = llama_store.user
 
 # Create the registration object
-user_registration = UserRegistrationModel(email="noone@example.com", password="Password123!")
+user_registration = RegisterUserRequestModel(email="noone@example.com", password="Password123!")
 user = None
 
 # Try to register the user. If the user already exists, a 400 will be thrown
@@ -49,7 +49,7 @@ except BadRequestException as e:
 token_service: TokenService = llama_store.token
 
 # Create the token request using the same credentials as the user registration
-token_request = ApiTokenRequestModel(email=user_registration.email, password=user_registration.password)
+token_request = CreateApiTokenRequestModel(email=user_registration.email, password=user_registration.password)
 
 # Create the token
 token = token_service.create_api_token(token_request)
@@ -64,7 +64,7 @@ llamas: LlamaService = llama_store.llama
 llama_picture_service: LlamaPictureService = llama_store.llama_picture
 
 # Define the create llama request
-new_llama_request: LlamaCreateModel = LlamaCreateModel(
+new_llama_request = CreateLlamaRequestModel(
     name="Llamapoleon Bonaparte",
     age=5, 
     color="white", 
@@ -76,7 +76,7 @@ print(f"Created llama {new_llama.name} with ID {new_llama.id}")
 
 # Upload the llama picture
 # Open the llama picture
-with open("llamapoleon-bonaparte.png", "rb") as f:
+with open("../create-pics/llamapoleon-bonaparte.png", "rb") as f:
     llama_picture = f.read()
 
 # Upload the picture

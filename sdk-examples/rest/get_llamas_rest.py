@@ -62,7 +62,7 @@ for llama in llamas_response_json:
     llama_id = llama["id"]
 
     # Download the image
-    llama_picture_response = requests.get(BASE_URL + f"llama/{llama_id}/picture", timeout=5)
+    llama_picture_response = requests.get(BASE_URL + f"llama/{llama_id}/picture", timeout=5, headers=headers)
 
     # Save the image
     with open(f"./pics/{llama['name']}.png", "wb") as f:

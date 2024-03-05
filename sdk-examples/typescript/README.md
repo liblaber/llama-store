@@ -1,4 +1,5 @@
-# llamastore-example
+# Llama Store TypeScript SDK Example
+
 A basic example of how to use the llamastore package.
 
 ## Installation

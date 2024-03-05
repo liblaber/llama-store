@@ -23,6 +23,7 @@ This will create an SDK in the output folder. You can then use the SDK in your p
 """
 import functools
 import io
+import logging
 import os
 
 from dotenv import load_dotenv
@@ -75,7 +76,7 @@ app = FastAPI(
     contact={"name": "liblab", "url": "https://liblab.com"},
     description=OPENAPI_DESCRIPTION,
     openapi_tags=tags_metadata,
-    version="0.0.1",
+    version="0.1.7",
     redirect_slashes=True,
     title="Llama Store API",
 )

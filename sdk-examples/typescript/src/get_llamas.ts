@@ -12,8 +12,7 @@
 // - Run this script using npm run get-llamas
  */
 
-import { Llamastore, ApiTokenRequest, UserRegistration, GetLlamasResponse } from 'llamastore';
-var fs = require('fs/promises');
+import { Llamastore, CreateApiTokenRequest, RegisterUserRequest, GetLlamasResponse } from 'llamastore';
 
 (async () => {
 
@@ -25,7 +24,7 @@ var fs = require('fs/promises');
     const userService = llamaStore.user;
 
     // Create the registration object
-    const userRegistration: UserRegistration = { email: 'noone@example.com', password: 'Password123!' };
+    const userRegistration: RegisterUserRequest = { email: 'noone@example.com', password: 'Password123!' };
     let user: any = null;
 
     // Try to register the user. If the user already exists, a 400 will be thrown
@@ -41,7 +40,7 @@ var fs = require('fs/promises');
     const tokenService = llamaStore.token;
 
     // Create the token request using the same credentials as the user registration
-    const tokenRequest: ApiTokenRequest = { email: userRegistration.email, password: userRegistration.password };
+    const tokenRequest: CreateApiTokenRequest = { email: userRegistration.email, password: userRegistration.password };
 
     // Create the token
     const token = await tokenService.createApiToken(tokenRequest);

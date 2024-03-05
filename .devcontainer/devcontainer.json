@@ -23,6 +23,9 @@
 		"ghcr.io/devcontainers/features/node:1": {
 						"version": "lts",
 			"nvmVersion": "latest"
+		},
+		"ghcr.io/devcontainers/features/go:1": {
+			"version": "latest"
 		}
 	},
 	"customizations": {
