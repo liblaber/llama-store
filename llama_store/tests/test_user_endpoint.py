@@ -100,7 +100,7 @@ class TestUserEndpoints:
                     "msg": "String should match pattern " "'.+\\@.+\\..+'",
                     "input": "test_userexample.com",
                     "ctx": {"pattern": ".+\\@.+\\..+"},
-                    "url": "https://errors.pydantic.dev/2.4/v/string_pattern_mismatch",
+                    "url": "https://errors.pydantic.dev/2.6/v/string_pattern_mismatch",
                 }
             ]
         }
@@ -122,7 +122,7 @@ class TestUserEndpoints:
                     "and contain at least one letter, one number, and one special character",
                     "input": "Password123",
                     "ctx": {"error": {}},
-                    "url": "https://errors.pydantic.dev/2.4/v/assertion_error",
+                    "url": "https://errors.pydantic.dev/2.6/v/assertion_error",
                 }
             ]
         }

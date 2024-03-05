@@ -90,7 +90,7 @@ class TestLlamaEndpoints:
                     "loc": ["body", "name"],
                     "msg": "Field required",
                     "input": {"age": 9, "color": "white", "rating": 4},
-                    "url": "https://errors.pydantic.dev/2.4/v/missing",
+                    "url": "https://errors.pydantic.dev/2.6/v/missing",
                 }
             ]
         }
@@ -113,7 +113,7 @@ class TestLlamaEndpoints:
                     "loc": ["body", "age"],
                     "msg": "Field required",
                     "input": {"name": "Llamageddon", "color": "white", "rating": 4},
-                    "url": "https://errors.pydantic.dev/2.4/v/missing",
+                    "url": "https://errors.pydantic.dev/2.6/v/missing",
                 }
             ]
         }
@@ -136,7 +136,7 @@ class TestLlamaEndpoints:
                     "loc": ["body", "color"],
                     "msg": "Field required",
                     "input": {"name": "Llamageddon", "age": 9, "rating": 4},
-                    "url": "https://errors.pydantic.dev/2.4/v/missing",
+                    "url": "https://errors.pydantic.dev/2.6/v/missing",
                 }
             ]
         }
@@ -159,7 +159,7 @@ class TestLlamaEndpoints:
                     "loc": ["body", "rating"],
                     "msg": "Field required",
                     "input": {"name": "Llamageddon", "age": 9, "color": "white"},
-                    "url": "https://errors.pydantic.dev/2.4/v/missing",
+                    "url": "https://errors.pydantic.dev/2.6/v/missing",
                 }
             ]
         }
