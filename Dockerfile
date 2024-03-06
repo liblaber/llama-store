@@ -6,10 +6,10 @@ WORKDIR /llama_store/
  
 COPY ./llama_store /llama_store/
 COPY ./requirements.txt /requirements.txt
-COPY ./scripts/recreate_database.sh /scripts/recreate_database.sh
+COPY ./scripts/recreate-database.sh /scripts/recreate-database.sh
 
 RUN pip install -r /requirements.txt
-RUN chmod +x /scripts/recreate_database.sh && /scripts/recreate_database.sh
+RUN chmod +x /scripts/recreate-database.sh && /scripts/recreate-database.sh
  
 EXPOSE 80
 

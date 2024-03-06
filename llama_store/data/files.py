@@ -1,6 +1,7 @@
 """
 Methods for interacting with files. Llama pictures are stored on the file system, not in the database.
 """
+
 import io
 import os
 

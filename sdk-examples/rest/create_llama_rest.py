@@ -10,7 +10,7 @@ import json
 import requests
 
 # The URL of the llama store API
-BASE_URL = "http://localhost:8000/"
+BASE_URL = "http://localhost:8080/"
 
 # Build the new user as a JSON object
 new_user = {
@@ -55,7 +55,7 @@ id = llama_response.json()["id"]
 
 # Upload the llama picture
 # Open the llama picture
-with open("llamapoleon-bonaparte.png", "rb") as f:
+with open("../create-pics/llamapoleon-bonaparte.png", "rb") as f:
     llama_picture = f.read()
 
 # Upload the picture

@@ -1,8 +1,8 @@
 """
-This script creates a new llama in the llama store, then sets its picture.
+This script gets all the llamas from the llama store and downloads their images
 
-It starts by creating a user and then creating an access token for that user. It then uses the access token to
-create the llama and upload the picture.
+It starts by creating a user and then creating an access token for that user. It then uses the access token to get all
+the llamas and then downloads their images.
 
 You will need to install the built llama store SDK to run this script.
 
@@ -11,16 +11,13 @@ You will need to install the built llama store SDK to run this script.
 - Install the SDK using the install script in the Python SDK directory
 - Ensure the llama store is running
 - Run this script
-
-This script will upload a llama picture called llamapoleon-bonaparte.png. This file needs to
-be in the same directory as this script.
 """
 from http_exceptions.client_exceptions import BadRequestException
 
 from llamastore import Llamastore
-from llamastore.services.user import User as UserService, UserRegistrationModel
-from llamastore.services.token import Token as TokenService, ApiTokenRequestModel
-from llamastore.services.llama import Llama as LlamaService, LlamaCreateModel
+from llamastore.services.user import User as UserService, RegisterUserRequestModel
+from llamastore.services.token import Token as TokenService, CreateApiTokenRequestModel
+from llamastore.services.llama import Llama as LlamaService, GetLlamasResponseModel
 from llamastore.services.llama_picture import LlamaPicture as LlamaPictureService
 
 # Create an instance of the llama store SDK
@@ -31,7 +28,7 @@ llama_store = Llamastore()
 user_service: UserService = llama_store.user
 
 # Create the registration object
-user_registration = UserRegistrationModel(email="noone@example.com", password="Password123!")
+user_registration = RegisterUserRequestModel(email="noone@example.com", password="Password123!")
 user = None
 
 # Try to register the user. If the user already exists, a 400 will be thrown
@@ -49,7 +46,7 @@ except BadRequestException as e:
 token_service: TokenService = llama_store.token
 
 # Create the token request using the same credentials as the user registration
-token_request = ApiTokenRequestModel(email=user_registration.email, password=user_registration.password)
+token_request = CreateApiTokenRequestModel(email=user_registration.email, password=user_registration.password)
 
 # Create the token
 token = token_service.create_api_token(token_request)
@@ -58,27 +55,33 @@ print("Token created")
 # Now we have the token we can set it at the SDK level so we never have to worry about it again
 llama_store.set_access_token(token.access_token)
 
-# Create a new llama
-# For this we can use the llama service and the llama picture service
+# Get all the llamas
+# For this we can use the llama service
 llamas: LlamaService = llama_store.llama
+
+# Get the llamas
+results: GetLlamasResponseModel = llamas.get_llamas()
+
+# Print the llama names
+print("\nLlama names:")
+for llama in results:
+    print(llama.name)
+
+# Download all the llama images
 llama_picture_service: LlamaPictureService = llama_store.llama_picture
 
-# Define the create llama request
-new_llama_request: LlamaCreateModel = LlamaCreateModel(
-    name="Llamapoleon Bonaparte",
-    age=5, 
-    color="white", 
-    rating=4)
+print("\nDownloading llama images:")
 
-# Create the llama
-new_llama = llamas.create_llama(new_llama_request)
-print(f"Created llama {new_llama.name} with ID {new_llama.id}")
+# Create a pics directory if it doesn't exist
+import os
+if not os.path.exists("pics"):
+    os.makedirs("pics")
 
-# Upload the llama picture
-# Open the llama picture
-with open("llamapoleon-bonaparte.png", "rb") as f:
-    llama_picture = f.read()
+for llama in results:
+    # Download the image
+    image = llama_picture_service.get_llama_picture_by_llama_id(llama.id)
 
-# Upload the picture
-llama_picture_service.create_llama_picture(new_llama.id, llama_picture)
-print("Uploaded llama picture")
+    # Save the image
+    with open(f"./pics/{llama.name}.png", "wb") as f:
+        f.write(image.content)
+        print(f"Downloaded image for {llama.name}")

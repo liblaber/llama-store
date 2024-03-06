@@ -19,9 +19,9 @@ info:
   contact:
     name: liblab
     url: https://liblab.com/
-  version: 0.0.1
+  version: 0.1.7
 servers:
-- url: http://localhost:8000
+- url: http://localhost:8080
   description: Prod
 paths:
   /llama/{llama_id}/picture:

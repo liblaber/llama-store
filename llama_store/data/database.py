@@ -1,6 +1,7 @@
 """
 Code to interact with the SQLite database
 """
+
 # pylint: disable=invalid-name
 
 from sqlalchemy import create_engine

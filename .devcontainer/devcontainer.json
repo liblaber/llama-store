@@ -23,6 +23,9 @@
 		"ghcr.io/devcontainers/features/node:1": {
 						"version": "lts",
 			"nvmVersion": "latest"
+		},
+		"ghcr.io/devcontainers/features/go:1": {
+			"version": "latest"
 		}
 	},
 	"customizations": {
@@ -35,7 +38,8 @@
 				"redhat.vscode-yaml",
 				"ms-python.black-formatter",
 				"tamasfe.even-better-toml",
-				"streetsidesoftware.code-spell-checker"
+				"streetsidesoftware.code-spell-checker",
+				"remcohaszing.schemastore"
 			]
 		}
 	},
@@ -47,7 +51,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "./scripts/post_create.sh",
+	"postCreateCommand": "./scripts/post-create.sh",
 
 	// Configure tool-specific properties.
 	// "customizations": {},

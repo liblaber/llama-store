@@ -5,8 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: FastAPI",
-            "type": "python",
+            "name": "Python - Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Debug llama store",
+            "type": "debugpy",
             "request": "launch",
             "module": "uvicorn",
             "env": {

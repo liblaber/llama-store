@@ -2,10 +2,11 @@
 Integration tests for the Llama store API.
 These tests test the /llama endpoint
 
-These tests assume a clean database. Run recreate_database.sh to clean up the database.
+These tests assume a clean database. Run recreate-database.sh to clean up the database.
 They also assume that the User integration tests have been run, so that there is a
 valid user and API token.
 """
+
 import pytest
 
 from db_migrations.versions.first import ALL_LLAMAS
@@ -90,7 +91,7 @@ class TestLlamaEndpoints:
                     "loc": ["body", "name"],
                     "msg": "Field required",
                     "input": {"age": 9, "color": "white", "rating": 4},
-                    "url": "https://errors.pydantic.dev/2.4/v/missing",
+                    "url": "https://errors.pydantic.dev/2.6/v/missing",
                 }
             ]
         }
@@ -113,7 +114,7 @@ class TestLlamaEndpoints:
                     "loc": ["body", "age"],
                     "msg": "Field required",
                     "input": {"name": "Llamageddon", "color": "white", "rating": 4},
-                    "url": "https://errors.pydantic.dev/2.4/v/missing",
+                    "url": "https://errors.pydantic.dev/2.6/v/missing",
                 }
             ]
         }
@@ -136,7 +137,7 @@ class TestLlamaEndpoints:
                     "loc": ["body", "color"],
                     "msg": "Field required",
                     "input": {"name": "Llamageddon", "age": 9, "rating": 4},
-                    "url": "https://errors.pydantic.dev/2.4/v/missing",
+                    "url": "https://errors.pydantic.dev/2.6/v/missing",
                 }
             ]
         }
@@ -159,7 +160,7 @@ class TestLlamaEndpoints:
                     "loc": ["body", "rating"],
                     "msg": "Field required",
                     "input": {"name": "Llamageddon", "age": 9, "color": "white"},
-                    "url": "https://errors.pydantic.dev/2.4/v/missing",
+                    "url": "https://errors.pydantic.dev/2.6/v/missing",
                 }
             ]
         }

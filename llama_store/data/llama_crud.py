@@ -1,6 +1,7 @@
 """
 This file contains the functions that will be used to interact with llamas in the database.
 """
+
 # pylint: disable=invalid-name
 
 from typing import List

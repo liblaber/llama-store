@@ -1,6 +1,7 @@
 """
 Helper script to extract the OpenAPI spec from a FastAPI app.
 """
+
 import argparse
 import json
 import sys

@@ -7,7 +7,6 @@
   },
   "scripts": {
     "setup": "npm --prefix ../../output/typescript install && npm --prefix ../../output/typescript run build && npm install",
-    "start": "tsc && node -r dotenv/config dist/index.js",
     "get-llamas": "tsc && node -r dotenv/config dist/get_llamas.js",
     "create-llama": "tsc && node -r dotenv/config dist/create_llama.js",
     "dev": "ts-node src/index.ts"

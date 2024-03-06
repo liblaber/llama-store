@@ -22,11 +22,11 @@ This repo also has a devContainer file, so you can also open it using the dev co
 
 ### Prime the database
 
-Before you can run the API you need to configure the SQLite database that is used to store the llamas. This database needs to be primed with some llama data for 6 llamas, as well as creating some pictures. You can create the database using the `recreate_database.sh` script in the [`scripts`](./scripts/) folder:
+Before you can run the API you need to configure the SQLite database that is used to store the llamas. This database needs to be primed with some llama data for 6 llamas, as well as creating some pictures. You can create the database using the `recreate-database.sh` script in the [`scripts`](./scripts/) folder:
 
 ```bash
 cd scripts
-./recreate_database.sh
+./recreate-database.sh
 ```
 
 This will create a database called `sql_app.db` in the [`llama_store/.appdata`](/llama_store/.appdata) folder. It will add the following tables to this database:
@@ -57,7 +57,7 @@ You can also run this from the command line using the `uvicorn` command:
 uvicorn main:app --reload
 ```
 
-Either way will launch the API on localhost on port 8000. You can then navigate to [http://localhost:8000/docs](http://localhost:8000/docs) to see the Swagger UI for the API. You can change the port number by passing the `--port` parameter to `uvicorn`:
+Either way will launch the API on localhost on port 8080. You can then navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to see the Swagger UI for the API. You can change the port number by passing the `--port` parameter to `uvicorn`:
   
 ```bash
 uvicorn main:app --reload --port 80
@@ -88,16 +88,16 @@ docker buildx build --platform=linux/arm64 -t llama-store .
 You can then run the container. On x86/x64 platforms run:
 
 ```bash
-docker run -p 80:8000 llama-store
+docker run -p 80:8080 llama-store
 ```
 
 On ARM64 (such as macOS on Apple Silicon), run the following:
 
 ```bash
-docker run --platform=linux/arm64 -p 8000:80 llama-store
+docker run --platform=linux/arm64 -p 8080:80 llama-store
 ```
 
-This will run on port 8000. Change the port number if you want to run it on a different port. The Docker container exposes port 80, but this run command maps it to port 8000 on the host to be consistent with the default `uvicorn` command.
+This will run on port 8080. Change the port number if you want to run it on a different port. The Docker container exposes port 80, but this run command maps it to port 8080 on the host to be consistent with the default `uvicorn` command.
 
 ## API end points
 
@@ -171,48 +171,7 @@ If you don't have an account - [join our beta](https://liblab.com/join).
 
 You can learn more about how to use liblab from our [developer docs](https://developers.liblab.com).
 
-The liblab CLI uses a [config file called `liblab.config.json`](https://developers.liblab.com/cli/config-file-overview) to configure the SDK. This repo has a config file called [`liblab.config.json`](./liblab.config.json) that you can use to generate the SDK. This config file has the following settings:
-
-```json
-{
-  "sdkName": "llama-store",
-  "specFilePath": "spec.json",
-  "languages": [
-    "python",
-    "java",
-    "typescript"
-  ],
-  "auth": [
-    "bearer"
-  ],
-  "createDocs": true,
-  "customizations": {
-    "devContainer": true,
-    "license": {
-      "type": "MIT"
-    }
-  },
-  "languageOptions": {
-    "typescript": {
-      "githubRepoName": "llama-store-sdk-typescript",
-      "sdkVersion": "0.0.1"
-    },
-    "python": {
-      "pypiPackageName": "LlamaStore",
-      "githubRepoName": "llama-store-sdk-python",
-      "sdkVersion": "0.0.1"
-    },
-    "java": {
-      "groupId": "com.liblab",
-      "githubRepoName": "llama-store-sdk-java",
-      "sdkVersion": "0.0.1"
-    }
-  },
-  "publishing": {
-    "githubOrg": "liblaber"
-  }
-}
-```
+The liblab CLI uses a [config file called `liblab.config.json`](https://developers.liblab.com/cli/config-file-overview) to configure the SDK. This repo has a config file called [`liblab.config.json`](./liblab.config.json) that you can use to generate the SDK. 
 
 This config file reads the local `spec.json` file. If you want to generate an SDK from a running API, you can change this to the URL of that API. SDKs will be generated for Java, Python and TypeScript with a name of `llama-store` (adjust to be language specific, so `llamaStore` in Java and TypeScript). The SDKs will be configured to use bearer tokens for authentication, and will include documentation. The generated SDKs will also be set up with dev containers for VS Code, so you can open the created SDK folder and get going straight away.
 
@@ -235,6 +194,8 @@ You can find pre-built SDKs in the following GitHub repos:
 | Python     | [llama-store-sdk-python](https://github.com/liblaber/llama-store-sdk-python) |
 | Java       | [llama-store-sdk-java](https://github.com/liblaber/llama-store-sdk-java) |
 | TypeScript | [llama-store-sdk-typescript](https://github.com/liblaber/llama-store-sdk-typescript) |
+| C#         | [llama-store-sdk-csharp](https://github.com/liblaber/llama-store-sdk-csharp) |
+| Go         | [llama-store-sdk-go](https://github.com/liblaber/llama-store-sdk-go) |
 
 These are generated by a GitHub action, and are updated whenever the spec changes. You can find the `publish_sdk.yaml` action in the [`.github/workflows`](./.github/workflows) folder.
 
@@ -295,10 +256,10 @@ Next, you need to launch the Llama store:
 1. From a terminal, run:
 
     ```bash
-    ./scripts/start_llama_store.sh
+    ./scripts/start-llama-store.sh
     ```
 
-    This will reset the llama store database, then launch the API on port 8000.
+    This will reset the llama store database, then launch the API on port 8080.
 
 Once you have done this, you can run the examples. You will need to create a new terminal to do this.
 
@@ -326,6 +287,14 @@ To run the TypeScript examples, navigate to the [`sdk-examples/typescript`](./sd
     ```
 
     This will create a user, generate an API token, and create a llama.
+
+1. Run the get llamas demo again with the following command:
+
+    ```bash
+    npm run get-llamas
+    ```
+
+    You will see the llama you created in the previous step in the list of llamas.
 
 ### Python
 
@@ -355,11 +324,47 @@ To run the Python examples, navigate to the [`sdk-examples/python`](./sdk-exampl
 
     This will create a user, generate an API token, and create a llama, uploading a picture.
 
+1. Run the get llamas demo again with the following command:
+
+    ```bash
+    python get_llamas.py
+    ```
+
+    You will see the llama you created in the previous step in the list of llamas.
+
+### Go
+
+To run the Go examples, you will need to copy the contents of the [`sdk-examples/go`](./sdk-examples/go) folder into the [`output/go/cmd/examples`](./output/go/cmd/examples) folder.
+
+1. Run the get llamas demo with the following command:
+
+    ```bash
+    go run get-llamas.go
+    ```
+
+    This will create a user, generate an API token, and print out a list of llamas. This demo shows the ability to call services on the SDK, set an API token once, and use that for all subsequent calls.
+
+1. Run the create llamas demo with the following command:
+
+    ```bash
+    go run create-llama.go
+    ```
+
+    This will create a user, generate an API token, and create a llama, uploading a picture.
+
+1. Run the get llamas demo again with the following command:
+
+    ```bash
+    go run get-llamas.go
+    ```
+
+    You will see the llama you created in the previous step in the list of llamas.
+
 ## OpenAPI spec
 
 The OpenAPI spec for this API is in the [`spec.json`](/spec.json) and [`spec.yaml`](/spec.yaml) files. These need to be generated whenever the spec changes. To do this, run the following command:
 
 ```bash
 cd scripts
-./create_specs.sh
+./create-specs.sh
 ```

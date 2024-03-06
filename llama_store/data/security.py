@@ -2,6 +2,7 @@
 This file contains functions to help with API security. This includes password hashing, token creation
 and token validation.
 """
+
 # pylint: disable=invalid-name
 
 from datetime import datetime, timedelta

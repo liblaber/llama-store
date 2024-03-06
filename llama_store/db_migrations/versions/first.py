@@ -5,6 +5,7 @@ Revises:
 Create Date: 2023-09-29 01:15:55.669005
 
 """
+
 # pylint: disable=invalid-name,no-member
 import secrets
 from typing import Sequence, Union

@@ -1,6 +1,7 @@
 """
 User models. These are used by the user endpoints.
 """
+
 # pylint: disable=duplicate-code
 
 from pydantic import BaseModel, Field

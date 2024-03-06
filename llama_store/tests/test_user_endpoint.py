@@ -2,8 +2,9 @@
 Integration tests for the Llama store API.
 These tests test the /user and /token endpoints
 
-These tests assume a clean database. Run recreate_database.sh to clean up the database
+These tests assume a clean database. Run recreate-database.sh to clean up the database
 """
+
 import pytest
 
 
@@ -100,7 +101,7 @@ class TestUserEndpoints:
                     "msg": "String should match pattern " "'.+\\@.+\\..+'",
                     "input": "test_userexample.com",
                     "ctx": {"pattern": ".+\\@.+\\..+"},
-                    "url": "https://errors.pydantic.dev/2.4/v/string_pattern_mismatch",
+                    "url": "https://errors.pydantic.dev/2.6/v/string_pattern_mismatch",
                 }
             ]
         }
@@ -122,7 +123,7 @@ class TestUserEndpoints:
                     "and contain at least one letter, one number, and one special character",
                     "input": "Password123",
                     "ctx": {"error": {}},
-                    "url": "https://errors.pydantic.dev/2.4/v/assertion_error",
+                    "url": "https://errors.pydantic.dev/2.6/v/assertion_error",
                 }
             ]
         }
