@@ -1,6 +1,7 @@
 """
 The endpoints for creating, updating and deleting llamas.
 """
+
 # pylint: disable=invalid-name
 
 from typing import Annotated

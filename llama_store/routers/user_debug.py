@@ -1,6 +1,7 @@
 """
 The endpoints for accessing users for debug mode.
 """
+
 # pylint: disable=invalid-name
 
 from typing import List

@@ -33,7 +33,7 @@ class TestSetupWrite:
         Sets up the tests by recreating the database and creating a test client
         """
         # Rebuild the initial database
-        os.system("bash ../scripts/recreate_database.sh")
+        os.system("bash ../scripts/recreate-database.sh")
 
         # Enable write mode
         os.environ["ALLOW_WRITE"] = "true"

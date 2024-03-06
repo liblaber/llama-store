@@ -1,6 +1,7 @@
 """
 The endpoints for accessing users.
 """
+
 # pylint: disable=invalid-name
 
 from typing import Annotated

@@ -1,6 +1,7 @@
 """
 Llama models. These are used by the llama endpoints.
 """
+
 from enum import Enum
 
 from pydantic import BaseModel, Field

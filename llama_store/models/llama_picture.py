@@ -1,6 +1,7 @@
 """
 Llama models. These are used by the llama endpoints.
 """
+
 from pydantic import BaseModel
 
 

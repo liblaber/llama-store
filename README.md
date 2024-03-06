@@ -22,11 +22,11 @@ This repo also has a devContainer file, so you can also open it using the dev co
 
 ### Prime the database
 
-Before you can run the API you need to configure the SQLite database that is used to store the llamas. This database needs to be primed with some llama data for 6 llamas, as well as creating some pictures. You can create the database using the `recreate_database.sh` script in the [`scripts`](./scripts/) folder:
+Before you can run the API you need to configure the SQLite database that is used to store the llamas. This database needs to be primed with some llama data for 6 llamas, as well as creating some pictures. You can create the database using the `recreate-database.sh` script in the [`scripts`](./scripts/) folder:
 
 ```bash
 cd scripts
-./recreate_database.sh
+./recreate-database.sh
 ```
 
 This will create a database called `sql_app.db` in the [`llama_store/.appdata`](/llama_store/.appdata) folder. It will add the following tables to this database:
@@ -57,7 +57,7 @@ You can also run this from the command line using the `uvicorn` command:
 uvicorn main:app --reload
 ```
 
-Either way will launch the API on localhost on port 8000. You can then navigate to [http://localhost:8000/docs](http://localhost:8000/docs) to see the Swagger UI for the API. You can change the port number by passing the `--port` parameter to `uvicorn`:
+Either way will launch the API on localhost on port 8080. You can then navigate to [http://localhost:8080/docs](http://localhost:8080/docs) to see the Swagger UI for the API. You can change the port number by passing the `--port` parameter to `uvicorn`:
   
 ```bash
 uvicorn main:app --reload --port 80
@@ -88,16 +88,16 @@ docker buildx build --platform=linux/arm64 -t llama-store .
 You can then run the container. On x86/x64 platforms run:
 
 ```bash
-docker run -p 80:8000 llama-store
+docker run -p 80:8080 llama-store
 ```
 
 On ARM64 (such as macOS on Apple Silicon), run the following:
 
 ```bash
-docker run --platform=linux/arm64 -p 8000:80 llama-store
+docker run --platform=linux/arm64 -p 8080:80 llama-store
 ```
 
-This will run on port 8000. Change the port number if you want to run it on a different port. The Docker container exposes port 80, but this run command maps it to port 8000 on the host to be consistent with the default `uvicorn` command.
+This will run on port 8080. Change the port number if you want to run it on a different port. The Docker container exposes port 80, but this run command maps it to port 8080 on the host to be consistent with the default `uvicorn` command.
 
 ## API end points
 
@@ -256,10 +256,10 @@ Next, you need to launch the Llama store:
 1. From a terminal, run:
 
     ```bash
-    ./scripts/start_llama_store.sh
+    ./scripts/start-llama-store.sh
     ```
 
-    This will reset the llama store database, then launch the API on port 8000.
+    This will reset the llama store database, then launch the API on port 8080.
 
 Once you have done this, you can run the examples. You will need to create a new terminal to do this.
 
@@ -366,5 +366,5 @@ The OpenAPI spec for this API is in the [`spec.json`](/spec.json) and [`spec.yam
 
 ```bash
 cd scripts
-./create_specs.sh
+./create-specs.sh
 ```

@@ -2,10 +2,11 @@
 Integration tests for the Llama store API.
 These tests test the /llama endpoint
 
-These tests assume a clean database. Run recreate_database.sh to clean up the database.
+These tests assume a clean database. Run recreate-database.sh to clean up the database.
 They also assume that the User integration tests have been run, so that there is a
 valid user and API token.
 """
+
 import pytest
 
 from db_migrations.versions.first import ALL_LLAMAS

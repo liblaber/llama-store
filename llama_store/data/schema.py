@@ -1,6 +1,7 @@
 """
 The schema models used by the ORM to store data in the database.
 """
+
 # pylint: disable=too-few-public-methods
 
 from sqlalchemy import Column, Integer, String

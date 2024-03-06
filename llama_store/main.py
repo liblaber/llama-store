@@ -21,9 +21,9 @@ Generate an SDK:
 
 This will create an SDK in the output folder. You can then use the SDK in your project, or see one of the examples.
 """
+
 import functools
 import io
-import logging
 import os
 
 from dotenv import load_dotenv
@@ -72,7 +72,7 @@ tags_metadata = [
 ]
 
 app = FastAPI(
-    servers=[{"url": "http://localhost:8000", "description": "Prod"}],
+    servers=[{"url": "http://localhost:8080", "description": "Prod"}],
     contact={"name": "liblab", "url": "https://liblab.com"},
     description=OPENAPI_DESCRIPTION,
     openapi_tags=tags_metadata,
@@ -133,4 +133,4 @@ def read_openapi_yaml() -> Response:
 
 # Run the app
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)

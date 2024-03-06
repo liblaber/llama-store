@@ -10,7 +10,7 @@ import json
 import requests
 
 # The URL of the llama store API
-BASE_URL = "http://localhost:8000/"
+BASE_URL = "http://localhost:8080/"
 
 # Build the new user as a JSON object
 new_user = {

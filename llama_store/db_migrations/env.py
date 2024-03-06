@@ -1,6 +1,7 @@
 """
 Alembic environment configuration file.
 """
+
 # pylint: disable=invalid-name,no-member
 
 from logging.config import fileConfig

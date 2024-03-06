@@ -1,6 +1,7 @@
 """
 The endpoints for reading llamas.
 """
+
 # pylint: disable=invalid-name
 
 from typing import Annotated, List

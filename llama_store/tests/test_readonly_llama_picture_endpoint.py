@@ -2,8 +2,9 @@
 Integration tests for the Llama store API.
 These tests test /llama/{llama_id}/picture endpoint is read only if the environment variable ALLOW_WRITE is not set
 
-These tests assume a clean database. Run recreate_database.sh to clean up the database
+These tests assume a clean database. Run recreate-database.sh to clean up the database
 """
+
 import pytest
 
 

@@ -38,7 +38,8 @@
 				"redhat.vscode-yaml",
 				"ms-python.black-formatter",
 				"tamasfe.even-better-toml",
-				"streetsidesoftware.code-spell-checker"
+				"streetsidesoftware.code-spell-checker",
+				"remcohaszing.schemastore"
 			]
 		}
 	},
@@ -50,7 +51,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "./scripts/post_create.sh",
+	"postCreateCommand": "./scripts/post-create.sh",
 
 	// Configure tool-specific properties.
 	// "customizations": {},

@@ -12,7 +12,7 @@ import (
 
 func main() {
 	config := llamastoreconfig.NewConfig()
-	config.SetBaseUrl("http://localhost:8000")
+	config.SetBaseUrl("http://localhost:8080")
 
 	llamaStore := llamastore.NewLlamaStore(config)
 
