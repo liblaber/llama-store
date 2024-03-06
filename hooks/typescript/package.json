@@ -1,0 +1,32 @@
+{
+  "name": "custom-liblab-plugin",
+  "version": "1.0.0",
+  "description": "Sample Plugin to add custom code to LibLab's generated sdk",
+  "scripts": {
+    "build": "npm test && tsc",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
+    "format": "npx prettier \"{src,tests}/**/*.ts\" --write",
+    "format:check": "npx prettier \"{src,tests}/**/*.ts\" --check",
+    "lint": "npx eslint \"{src,tests}/**/*.ts\" --cache",
+    "lint:init": "npx eslint --init",
+    "lint:ci": "npx eslint \"{src,tests}/**/*.ts\" --cache --quiet",
+    "lint:fix": "npx eslint \"{src,tests}/**/*.ts\" --cache --fix"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "^18.11.3",
+    "chai": "^4.3.6",
+    "dotenv": "^16.0.3",
+    "mocha": "^3.5.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1"
+  }
+}

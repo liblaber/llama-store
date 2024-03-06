@@ -3,9 +3,8 @@
   "specFilePath": "spec.json",
   "baseUrl": "http://localhost:8000",
   "languages": [
-    // "csharp",
+    "csharp",
     "go",
-    // "java",
     "python",
     "typescript"
   ],
