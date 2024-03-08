@@ -24,6 +24,9 @@
 						"version": "lts",
 			"nvmVersion": "latest"
 		},
+		"ghcr.io/devcontainers/features/dotnet:2": {
+			"version": "7.0"
+		},
 		"ghcr.io/devcontainers/features/go:1": {
 			"version": "latest"
 		}
@@ -39,7 +42,8 @@
 				"ms-python.black-formatter",
 				"tamasfe.even-better-toml",
 				"streetsidesoftware.code-spell-checker",
-				"remcohaszing.schemastore"
+				"remcohaszing.schemastore",
+				"ms-dotnettools.csdevkit"
 			]
 		}
 	},
