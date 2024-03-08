@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"strings"
 
@@ -23,7 +24,7 @@ func main() {
 	userRegistration.SetPassword("Password123!")
 
 	// Register the user
-	_, err := llamaStore.User.RegisterUser(userRegistration)
+	_, err := llamaStore.User.RegisterUser(context.Background(), userRegistration)
 
 	// Check if the user was created - a 400 status code means the user already exists, so do nothing
 	if err != nil {
@@ -41,7 +42,7 @@ func main() {
 	tokenRequest.SetPassword(*userRegistration.Password)
 
 	// // Get the access token
-	tokenResponse, err := llamaStore.Token.CreateApiToken(tokenRequest)
+	tokenResponse, err := llamaStore.Token.CreateApiToken(context.Background(), tokenRequest)
 
 	// Check if the access token was created
 	if err != nil {
@@ -60,7 +61,7 @@ func main() {
 	LlamaCreate.SetRating(4)
 
 	// Create the llama
-	newLlama, err := llamaStore.Llama.CreateLlama(LlamaCreate)
+	newLlama, err := llamaStore.Llama.CreateLlama(context.Background(), LlamaCreate)
 
 	// Check if the llama was created
 	if err != nil {
