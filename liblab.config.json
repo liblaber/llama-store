@@ -17,11 +17,6 @@
     "devContainer": true,
     "license": {
       "type": "MIT"
-    },
-    "authentication": {
-      "access": {
-        "prefix": "Bearer"
-      }
     }
   },
   "languageOptions": {
