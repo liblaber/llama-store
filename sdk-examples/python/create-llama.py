@@ -21,8 +21,9 @@ from llama_store import LlamaStore
 from llama_store.net.transport.request_error import RequestError
 from llama_store.services.user import User as UserService, UserRegistration
 from llama_store.services.token import TokenService, ApiTokenRequest
-from llama_store.services.llama import LlamaService, Llama, LlamaCreate
+from llama_store.services.llama import LlamaService, LlamaCreate
 from llama_store.services.llama_picture import LlamaPictureService
+from llama_store.models.llama_color import LlamaColor
 
 # Create an instance of the llama store SDK
 llama_store = LlamaStore(access_token=None)
@@ -68,7 +69,7 @@ llama_picture_service: LlamaPictureService = llama_store.llama_picture
 new_llama_request = LlamaCreate(
     name="Llamapoleon Bonaparte",
     age=5, 
-    color="white", 
+    color=LlamaColor.WHITE, 
     rating=4)
 
 # Create the llama
