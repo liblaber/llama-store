@@ -14,13 +14,13 @@ from models.user import User, UserRegistration
 # Create the router
 router = APIRouter(
     prefix="/user",
-    tags=["user"],
+    tags=["User"],
 )
 
 
 @router.post(
     path="",
-    operation_id="register_user",
+    operation_id="RegisterUser",
     response_model=User,
     status_code=status.HTTP_201_CREATED,
     responses={

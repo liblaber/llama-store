@@ -30,7 +30,7 @@ def get_llama_by_id(db: Session, llama_id: int) -> Llama:
     :param Session db: The database session.
     :param int llama_id: The ID of the llama to get.
     :return: The llama with the given ID.
-    :rtype: LLama
+    :rtype: Llama
     """
     db_llama = get_db_llama_by_id(db, llama_id)
     return None if db_llama is None else Llama.model_validate(db_llama)
@@ -38,12 +38,12 @@ def get_llama_by_id(db: Session, llama_id: int) -> Llama:
 
 def get_llama_by_name(db: Session, llama_name: str) -> Llama:
     """
-    Get a llama by name. Llama names muct be unique
+    Get a llama by name. Llama names must be unique
 
     :param Session db: The database session.
     :param int llama_name: The name of the llama to get.
     :return: The llama with the given name.
-    :rtype: LLama
+    :rtype: Llama
     """
     db_llama = db.query(DBLlama).filter(DBLlama.name == llama_name).first()
     return None if db_llama is None else Llama.model_validate(db_llama)

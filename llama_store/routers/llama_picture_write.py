@@ -18,13 +18,13 @@ from models.user import User
 
 router = APIRouter(
     prefix="/llama/{llama_id}/picture",
-    tags=["llama-picture"],
+    tags=["LlamaPicture"],
 )
 
 
 @router.post(
     path="",
-    operation_id="create_llama_picture",
+    operation_id="CreateLlamaPicture",
     status_code=status.HTTP_201_CREATED,
     response_model=LlamaId,
     responses={
@@ -87,7 +87,7 @@ async def create_llama_picture(
 
 @router.put(
     path="",
-    operation_id="update_llama_picture",
+    operation_id="UpdateLlamaPicture",
     status_code=status.HTTP_200_OK,
     response_model=LlamaId,
     responses={
@@ -130,7 +130,7 @@ async def update_llama_picture(
     db_llama = llama_crud.get_llama_by_id(db, llama_id)
     if db_llama is None:
         # If the llama does not exist, return a 404
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="LLama not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Llama not found")
 
     # Check if the llama already has a picture. If it does, delete it
     db_picture = llama_picture_crud.get_llama_picture_by_id(db, llama_id)
@@ -149,7 +149,7 @@ async def update_llama_picture(
 
 @router.delete(
     path="",
-    operation_id="delete_llama_picture",
+    operation_id="DeleteLlamaPicture",
     status_code=status.HTTP_204_NO_CONTENT,
     responses={
         status.HTTP_204_NO_CONTENT: {"description": "Llama picture deleted successfully"},
@@ -172,7 +172,7 @@ def delete_llama_picture(
     db_llama = llama_crud.get_llama_by_id(db, llama_id)
     if db_llama is None:
         # If the llama does not exist, return a 404
-        raise HTTPException(status_code=404, detail="LLama not found")
+        raise HTTPException(status_code=404, detail="Llama not found")
 
     # Check the picture is valid
     db_picture = llama_picture_crud.get_llama_picture_by_id(db, llama_id)

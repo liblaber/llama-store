@@ -18,13 +18,13 @@ from models.user import User
 
 router = APIRouter(
     prefix="/llama",
-    tags=["llama"],
+    tags=["Llama"],
 )
 
 
 @router.get(
     path="",
-    operation_id="get_llamas",
+    operation_id="GetLlamas",
     response_model=List[Llama],
     status_code=status.HTTP_200_OK,
     responses={
@@ -47,7 +47,7 @@ def get_llamas(
 
 @router.get(
     path="/{llama_id}",
-    operation_id="get_llama_by_id",
+    operation_id="GetLlamaByID",
     response_model=Llama,
     status_code=status.HTTP_200_OK,
     responses={
@@ -71,6 +71,6 @@ def get_llama(
     llama = llama_crud.get_llama_by_id(db, llama_id)
     if llama is None:
         # If the llama does not exist, return a 404
-        raise HTTPException(status_code=404, detail="LLama not found")
+        raise HTTPException(status_code=404, detail="Llama not found")
     # Return the llama
     return llama

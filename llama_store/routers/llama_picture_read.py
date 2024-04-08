@@ -18,13 +18,13 @@ from models.user import User
 
 router = APIRouter(
     prefix="/llama/{llama_id}/picture",
-    tags=["llama-picture"],
+    tags=["LlamaPicture"],
 )
 
 
 @router.get(
     path="",
-    operation_id="get_llama_picture_by_llama_id",
+    operation_id="GetLlamaPictureByLlamaID",
     response_class=FileResponse,
     status_code=status.HTTP_200_OK,
     responses={
@@ -51,7 +51,7 @@ def get_llama_picture(
     db_picture = llama_picture_crud.get_llama_picture_by_id(db, llama_id)
     if db_picture is None:
         # If the llama does not exist, return a 404
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="LLama picture not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Llama picture not found")
 
     # Return the llama picture from the file system
     return FileResponse(path=db_picture.image_file_location, media_type="image/png")

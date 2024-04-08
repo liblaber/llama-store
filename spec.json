@@ -19,11 +19,11 @@
     "/llama/{llama_id}/picture": {
       "get": {
         "tags": [
-          "llama-picture"
+          "LlamaPicture"
         ],
         "summary": "Get Llama Picture",
         "description": "Get a llama's picture by the llama ID. Pictures are in PNG format.",
-        "operationId": "get_llama_picture_by_llama_id",
+        "operationId": "GetLlamaPictureByLlamaID",
         "security": [
           {
             "Bearer": []
@@ -76,11 +76,11 @@
       },
       "post": {
         "tags": [
-          "llama-picture"
+          "LlamaPicture"
         ],
         "summary": "Create Llama Picture",
         "description": "Create a picture for a llama. The picture is sent as a PNG as binary data in the body of the request.",
-        "operationId": "create_llama_picture",
+        "operationId": "CreateLlamaPicture",
         "security": [
           {
             "Bearer": []
@@ -148,11 +148,11 @@
       },
       "put": {
         "tags": [
-          "llama-picture"
+          "LlamaPicture"
         ],
         "summary": "Update Llama Picture",
         "description": "Update a picture for a llama. The picture is sent as a PNG as binary data in the body of the request.\n\nIf the llama does not have a picture, one will be created. If the llama already has a picture,\n it will be overwritten.\nIf the llama does not exist, a 404 will be returned.",
-        "operationId": "update_llama_picture",
+        "operationId": "UpdateLlamaPicture",
         "security": [
           {
             "Bearer": []
@@ -217,11 +217,11 @@
       },
       "delete": {
         "tags": [
-          "llama-picture"
+          "LlamaPicture"
         ],
         "summary": "Delete Llama Picture",
         "description": "Delete a llama's picture by ID.",
-        "operationId": "delete_llama_picture",
+        "operationId": "DeleteLlamaPicture",
         "security": [
           {
             "Bearer": []
@@ -273,11 +273,11 @@
     "/llama": {
       "get": {
         "tags": [
-          "llama"
+          "Llama"
         ],
         "summary": "Get Llamas",
         "description": "Get all the llamas.",
-        "operationId": "get_llamas",
+        "operationId": "GetLlamas",
         "responses": {
           "200": {
             "description": "Llamas",
@@ -288,7 +288,7 @@
                     "$ref": "#/components/schemas/Llama"
                   },
                   "type": "array",
-                  "title": "Response 200 Get Llamas"
+                  "title": "Response 200 Getllamas"
                 }
               }
             }
@@ -308,11 +308,11 @@
       },
       "post": {
         "tags": [
-          "llama"
+          "Llama"
         ],
         "summary": "Create Llama",
         "description": "Create a new llama. Llama names must be unique.",
-        "operationId": "create_llama",
+        "operationId": "CreateLlama",
         "requestBody": {
           "content": {
             "application/json": {
@@ -364,11 +364,11 @@
     "/llama/{llama_id}": {
       "get": {
         "tags": [
-          "llama"
+          "Llama"
         ],
         "summary": "Get Llama",
         "description": "Get a llama by ID.",
-        "operationId": "get_llama_by_id",
+        "operationId": "GetLlamaByID",
         "security": [
           {
             "Bearer": []
@@ -402,7 +402,7 @@
                   "items": {
                     "$ref": "#/components/schemas/Llama"
                   },
-                  "title": "Response 200 Get Llama By Id"
+                  "title": "Response 200 Getllamabyid"
                 }
               }
             }
@@ -430,11 +430,11 @@
       },
       "put": {
         "tags": [
-          "llama"
+          "Llama"
         ],
         "summary": "Update Llama",
         "description": "Update a llama. If the llama does not exist, create it.\n\nWhen updating a llama, the llama name must be unique. If the llama name is not unique, a 409 will be returned.",
-        "operationId": "update_llama",
+        "operationId": "UpdateLlama",
         "security": [
           {
             "Bearer": []
@@ -511,11 +511,11 @@
       },
       "delete": {
         "tags": [
-          "llama"
+          "Llama"
         ],
         "summary": "Delete Llama",
         "description": "Delete a llama. If the llama does not exist, this will return a 404.",
-        "operationId": "delete_llama",
+        "operationId": "DeleteLlama",
         "security": [
           {
             "Bearer": []
@@ -567,11 +567,11 @@
     "/token": {
       "post": {
         "tags": [
-          "token"
+          "Token"
         ],
         "summary": "Create Api Token",
         "description": "Create an API token for a user. These tokens expire after 30 minutes.\n\nOnce you have this token, you need to pass it to other endpoints in the Authorization header as a Bearer token.",
-        "operationId": "create_api_token",
+        "operationId": "CreateAPIToken",
         "requestBody": {
           "content": {
             "application/json": {
@@ -612,11 +612,11 @@
     "/user/{email}": {
       "get": {
         "tags": [
-          "user"
+          "User"
         ],
         "summary": "Get User By Email",
         "description": "Get a user by email.\n\nThis endpoint will return a 404 if the user does not exist. Otherwise, it will return a 200.",
-        "operationId": "get_user_by_email",
+        "operationId": "GetUserByEmail",
         "security": [
           {
             "Bearer": []
@@ -674,11 +674,11 @@
     "/user": {
       "post": {
         "tags": [
-          "user"
+          "User"
         ],
         "summary": "Register User",
         "description": "Register a new user.\n\nThis endpoint will return a 400 if the user already exists. Otherwise, it will return a 201.",
-        "operationId": "register_user",
+        "operationId": "RegisterUser",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1096,19 +1096,19 @@
   },
   "tags": [
     {
-      "name": "llama",
+      "name": "Llama",
       "description": "Get the llamas"
     },
     {
-      "name": "llama-picture",
+      "name": "LlamaPicture",
       "description": "Get the llama pictures"
     },
     {
-      "name": "user",
+      "name": "User",
       "description": "Register users"
     },
     {
-      "name": "token",
+      "name": "Token",
       "description": "Manage API Tokens"
     }
   ]
