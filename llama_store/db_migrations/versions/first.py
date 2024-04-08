@@ -23,42 +23,42 @@ depends_on: Union[str, Sequence[str], None] = None
 
 ALL_LLAMAS = [
     {
-        "id": 1,
+        "llama_id": 1,
         "name": "Libby the Llama",
         "age": 3,
         "color": "white",
         "rating": 5,
     },
     {
-        "id": 2,
+        "llama_id": 2,
         "name": "Labby the Llama",
         "age": 5,
         "color": "gray",
         "rating": 4,
     },
     {
-        "id": 3,
+        "llama_id": 3,
         "name": "Sean the fake Llama",
         "age": 18,
         "color": "white",
         "rating": 1,
     },
     {
-        "id": 4,
+        "llama_id": 4,
         "name": "Logo the Llama logo",
         "age": 2,
         "color": "black",
         "rating": 5,
     },
     {
-        "id": 5,
+        "llama_id": 5,
         "name": "Barack O'Llama",
         "age": 4,
         "color": "black",
         "rating": 5,
     },
     {
-        "id": 6,
+        "llama_id": 6,
         "name": "Llama Del Rey",
         "age": 9,
         "color": "white",
@@ -89,7 +89,7 @@ def upgrade() -> None:
 
     llamas_table = op.create_table(
         "llamas",
-        sa.Column("id", sa.Integer, primary_key=True),
+        sa.Column("llama_id", sa.Integer, primary_key=True),
         sa.Column("name", sa.String, nullable=False, unique=True, index=True),
         sa.Column("age", sa.Integer, nullable=False),
         sa.Column("color", sa.String, nullable=False),
@@ -98,7 +98,7 @@ def upgrade() -> None:
 
     llama_pictures_table = op.create_table(
         "llama_picture_locations",
-        sa.Column("id", sa.Integer, primary_key=True),
+        sa.Column("llama_picture_id", sa.Integer, primary_key=True),
         sa.Column("llama_id", sa.Integer, nullable=False, unique=True, index=True),
         sa.Column("image_file_location", sa.String, nullable=False),
     )
@@ -110,7 +110,7 @@ def upgrade() -> None:
 
     def get_llama_insert(llama_id: int) -> dict:
         return {
-            "id": llama_id,
+            "llama_picture_id": llama_id,
             "llama_id": llama_id,
             "image_file_location": f"{root}/{llama_id}.png",
         }

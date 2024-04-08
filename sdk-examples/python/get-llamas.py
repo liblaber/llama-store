@@ -12,30 +12,31 @@ You will need to install the built llama store SDK to run this script.
 - Ensure the llama store is running
 - Run this script
 """
-from http_exceptions.client_exceptions import BadRequestException
 
-from llamastore import Llamastore
-from llamastore.services.user import User as UserService, RegisterUserRequestModel
-from llamastore.services.token import Token as TokenService, CreateApiTokenRequestModel
-from llamastore.services.llama import Llama as LlamaService, GetLlamasResponseModel
-from llamastore.services.llama_picture import LlamaPicture as LlamaPictureService
+from typing import List
+from llama_store import LlamaStore
+from llama_store.net.transport.request_error import RequestError
+from llama_store.services.user import User as UserService, UserRegistration
+from llama_store.services.token import TokenService, ApiTokenRequest
+from llama_store.services.llama import LlamaService, Llama
+from llama_store.services.llama_picture import LlamaPictureService
 
 # Create an instance of the llama store SDK
-llama_store = Llamastore()
+llama_store = LlamaStore(access_token=None)
 
 # Create a user
 # For this we can use the user service
 user_service: UserService = llama_store.user
 
 # Create the registration object
-user_registration = RegisterUserRequestModel(email="noone@example.com", password="Password123!")
+user_registration = UserRegistration(email="noone@example.com", password="Password123!")
 user = None
 
 # Try to register the user. If the user already exists, a 400 will be thrown
 try:
     user = user_service.register_user(user_registration)
     print("User created")
-except BadRequestException as e:
+except RequestError as e:
     if e.status_code == 400:
         print("User already exists - user won't be created")
     else:
@@ -46,7 +47,7 @@ except BadRequestException as e:
 token_service: TokenService = llama_store.token
 
 # Create the token request using the same credentials as the user registration
-token_request = CreateApiTokenRequestModel(email=user_registration.email, password=user_registration.password)
+token_request = ApiTokenRequest(email=user_registration.email, password=user_registration.password)
 
 # Create the token
 token = token_service.create_api_token(token_request)
@@ -54,13 +55,15 @@ print("Token created")
 
 # Now we have the token we can set it at the SDK level so we never have to worry about it again
 llama_store.set_access_token(token.access_token)
+print("Access token set")
+print(f"Access token: {token.access_token}")
 
 # Get all the llamas
 # For this we can use the llama service
 llamas: LlamaService = llama_store.llama
 
 # Get the llamas
-results: GetLlamasResponseModel = llamas.get_llamas()
+results: List[Llama] = llamas.get_llamas()
 
 # Print the llama names
 print("\nLlama names:")
@@ -79,9 +82,9 @@ if not os.path.exists("pics"):
 
 for llama in results:
     # Download the image
-    image = llama_picture_service.get_llama_picture_by_llama_id(llama.id)
+    image = llama_picture_service.get_llama_picture_by_llama_id(llama.llama_id)
 
     # Save the image
     with open(f"./pics/{llama.name}.png", "wb") as f:
-        f.write(image.content)
+        f.write(image)
         print(f"Downloaded image for {llama.name}")

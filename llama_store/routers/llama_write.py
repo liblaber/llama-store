@@ -95,7 +95,7 @@ def update_llama(
     if (
         existing_llama_by_id is not None
         and existing_llama_by_name is not None
-        and existing_llama_by_id.id != existing_llama_by_name.id
+        and existing_llama_by_id.llama_id != existing_llama_by_name.llama_id
     ):
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Llama named {llama.name} already exists")
 

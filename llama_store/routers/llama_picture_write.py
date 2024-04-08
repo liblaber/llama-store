@@ -82,7 +82,7 @@ async def create_llama_picture(
     # Write the file path to the database
     llama_picture_crud.create_or_update_llama_picture(db, llama_id, file_path)
 
-    return LlamaId(id=llama_id)
+    return LlamaId(llama_id=llama_id)
 
 
 @router.put(
@@ -144,7 +144,7 @@ async def update_llama_picture(
     # Write the file path to the database
     llama_picture_crud.create_or_update_llama_picture(db, llama_id, file_path)
 
-    return LlamaId(id=llama_id)
+    return LlamaId(llama_id=llama_id)
 
 
 @router.delete(

@@ -20,7 +20,7 @@ def get_db_llama_by_id(db: Session, llama_id: int) -> DBLlama:
     :return: The llama with the given ID.
     :rtype: DBLlama
     """
-    return db.query(DBLlama).filter(DBLlama.id == llama_id).first()
+    return db.query(DBLlama).filter(DBLlama.llama_id == llama_id).first()
 
 
 def get_llama_by_id(db: Session, llama_id: int) -> Llama:

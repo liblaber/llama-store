@@ -850,9 +850,9 @@
               5
             ]
           },
-          "id": {
+          "llama_id": {
             "type": "integer",
-            "title": "Id",
+            "title": "Llama Id",
             "description": "The ID of the llama.",
             "examples": [
               1
@@ -865,7 +865,7 @@
           "age",
           "color",
           "rating",
-          "id"
+          "llama_id"
         ],
         "title": "Llama",
         "description": "A llama, with details of its name, age, color, and rating from 1 to 5.",
@@ -873,7 +873,7 @@
           {
             "age": 5,
             "color": "brown",
-            "id": "1",
+            "llama_id": "1",
             "name": "libby the llama",
             "rating": 4
           }
@@ -961,9 +961,9 @@
       },
       "LlamaId": {
         "properties": {
-          "id": {
+          "llama_id": {
             "type": "integer",
-            "title": "Id",
+            "title": "Llama Id",
             "description": "The ID of the llama.",
             "examples": [
               1
@@ -972,13 +972,13 @@
         },
         "type": "object",
         "required": [
-          "id"
+          "llama_id"
         ],
         "title": "LlamaId",
         "description": "A llama id.",
         "examples": [
           {
-            "id": "1"
+            "llama_id": "1"
           }
         ]
       },

@@ -23,13 +23,13 @@ class LlamaId(BaseModel):
     A llama's ID. This is used as a response model when creating llama pictures.
     """
 
-    id: int = Field(description="The ID of the llama.", examples=[1])
+    llama_id: int = Field(description="The ID of the llama.", examples=[1])
 
     model_config = {
         "json_schema_extra": {
             "examples": [
                 {
-                    "id": "1",
+                    "llama_id": "1",
                 }
             ],
             "description": "A llama id.",
@@ -89,13 +89,13 @@ class Llama(LlamaBase):
     A llama, with details of it's name, age, color, and rating from 1 to 5.
     """
 
-    id: int = Field(description="The ID of the llama.", examples=[1])
+    llama_id: int = Field(description="The ID of the llama.", examples=[1])
 
     model_config = {
         "json_schema_extra": {
             "examples": [
                 {
-                    "id": "1",
+                    "llama_id": "1",
                     "name": "libby the llama",
                     "age": 5,
                     "color": "brown",

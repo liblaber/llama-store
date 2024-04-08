@@ -10,7 +10,7 @@ class LlamaPicture(BaseModel):
     A link to a file containing a picture of a llama.
     """
 
-    id: int
+    llama_picture_id: int
     llama_id: int
     image_file_location: str
 
