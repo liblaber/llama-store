@@ -38,9 +38,9 @@ class TestUserEndpoints:
         """
         response = pytest.client.post("/token", json={"email": "test_user@example.com", "password": "Password123!"})
         assert response.status_code == 201
-        token_type = response.json()["token_type"]
-        pytest.api_token = response.json()["access_token"]
-        assert token_type == "bearer"
+        tokenType = response.json()["tokenType"]
+        pytest.api_token = response.json()["accessToken"]
+        assert tokenType == "bearer"
         assert pytest.api_token is not None
 
     @pytest.mark.order(1)

@@ -4,7 +4,7 @@ Llama models. These are used by the llama endpoints.
 
 from enum import Enum
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class LlamaColor(str, Enum):
@@ -23,10 +23,10 @@ class LlamaId(BaseModel):
     A llama's ID. This is used as a response model when creating llama pictures.
     """
 
-    llama_id: int = Field(description="The ID of the llama.", examples=[1])
+    llama_id: int = Field(description="The ID of the llama.", examples=[1], alias="llamaId", title="Llama Id")
 
-    model_config = {
-        "json_schema_extra": {
+    model_config = ConfigDict(
+        json_schema_extra={
             "examples": [
                 {
                     "llama_id": "1",
@@ -34,7 +34,9 @@ class LlamaId(BaseModel):
             ],
             "description": "A llama id.",
         },
-    }
+        from_attributes=True,
+        populate_by_name=True,
+    )
 
 
 class LlamaBase(BaseModel):
@@ -62,8 +64,8 @@ class LlamaBase(BaseModel):
         le=5,
     )
 
-    model_config = {
-        "json_schema_extra": {
+    model_config = ConfigDict(
+        json_schema_extra={
             "examples": [
                 {
                     "name": "libby the llama",
@@ -74,8 +76,9 @@ class LlamaBase(BaseModel):
             ],
             "description": "A new llama for the llama store.",
         },
-        "from_attributes": True,
-    }
+        from_attributes=True,
+        populate_by_name=True,
+    )
 
 
 class LlamaCreate(LlamaBase):
@@ -89,10 +92,10 @@ class Llama(LlamaBase):
     A llama, with details of it's name, age, color, and rating from 1 to 5.
     """
 
-    llama_id: int = Field(description="The ID of the llama.", examples=[1])
+    llama_id: int = Field(description="The ID of the llama.", examples=[1], alias="llamaId", title="Llama Id")
 
-    model_config = {
-        "json_schema_extra": {
+    model_config = ConfigDict(
+        json_schema_extra={
             "examples": [
                 {
                     "llama_id": "1",
@@ -104,5 +107,6 @@ class Llama(LlamaBase):
             ],
             "description": "A llama, with details of its name, age, color, and rating from 1 to 5.",
         },
-        "from_attributes": True,
-    }
+        from_attributes=True,
+        populate_by_name=True,
+    )

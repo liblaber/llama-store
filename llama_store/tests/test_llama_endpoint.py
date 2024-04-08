@@ -10,7 +10,18 @@ valid user and API token.
 import pytest
 
 from db_migrations.versions.first import ALL_LLAMAS
-
+def all_llamas():
+    new_llamas = []
+    for llama in ALL_LLAMAS:
+        new_llamas.append({
+            "llamaId": llama["llama_id"],
+            "name": llama["name"],
+            "age": llama["age"],
+            "color": llama["color"],
+            "rating": llama["rating"],
+        })
+    return new_llamas
+    
 
 class TestLlamaEndpoints:
     """
@@ -32,7 +43,7 @@ class TestLlamaEndpoints:
         """
         response = pytest.client.get("/llama", headers={"Authorization": f"Bearer {pytest.api_token}"})
         assert response.status_code == 200
-        assert response.json() == ALL_LLAMAS
+        assert response.json() == all_llamas()
 
     @pytest.mark.order(101)
     def test_get_llama_by_id_without_an_api_token_gives_an_error(self):
@@ -50,7 +61,7 @@ class TestLlamaEndpoints:
         """
         response = pytest.client.get(f"/llama/{llama_id}", headers={"Authorization": f"Bearer {pytest.api_token}"})
         assert response.status_code == 200
-        assert response.json() == ALL_LLAMAS[llama_id - 1]
+        assert response.json() == all_llamas()[llama_id - 1]
 
     @pytest.mark.order(101)
     def test_create_a_new_llama_without_an_api_key_fails(self):
@@ -71,7 +82,7 @@ class TestLlamaEndpoints:
             headers={"Authorization": f"Bearer {pytest.api_token}"},
         )
         assert response.status_code == 201
-        assert response.json() == {"llama_id": 7, "name": "Llamageddon", "age": 9, "color": "white", "rating": 4}
+        assert response.json() == {"llamaId": 7, "name": "Llamageddon", "age": 9, "color": "white", "rating": 4}
 
     @pytest.mark.order(101)
     def test_create_a_new_llama_with_an_api_key_and_no_name_gives_an_error(self):
@@ -213,7 +224,7 @@ class TestLlamaEndpoints:
             headers={"Authorization": f"Bearer {pytest.api_token}"},
         )
 
-        llama_id = response.json()["llama_id"]
+        llama_id = response.json()["llamaId"]
         response = pytest.client.get(f"/llama/{llama_id}", headers={"Authorization": f"Bearer {pytest.api_token}"})
 
         assert response.status_code == 200
@@ -233,7 +244,7 @@ class TestLlamaEndpoints:
             headers={"Authorization": f"Bearer {pytest.api_token}"},
         )
 
-        llama_id = response.json()["llama_id"]
+        llama_id = response.json()["llamaId"]
         response = pytest.client.put(
             f"/llama/{llama_id}",
             json={"name": "Dali Llama", "age": 12, "color": "black", "rating": 4},
@@ -260,7 +271,7 @@ class TestLlamaEndpoints:
             headers={"Authorization": f"Bearer {pytest.api_token}"},
         )
 
-        llama_id = response.json()["llama_id"]
+        llama_id = response.json()["llamaId"]
         response = pytest.client.put(
             f"/llama/{llama_id}", json={"name": "Bllama Llama", "age": 12, "color": "black", "rating": 4}
         )
@@ -278,7 +289,7 @@ class TestLlamaEndpoints:
             headers={"Authorization": f"Bearer {pytest.api_token}"},
         )
 
-        llama_id = response.json()["llama_id"]
+        llama_id = response.json()["llamaId"]
         response = pytest.client.delete(f"/llama/{llama_id}", headers={"Authorization": f"Bearer {pytest.api_token}"})
 
         assert response.status_code == 204
@@ -298,7 +309,7 @@ class TestLlamaEndpoints:
             headers={"Authorization": f"Bearer {pytest.api_token}"},
         )
 
-        llama_id = response.json()["llama_id"]
+        llama_id = response.json()["llamaId"]
         response = pytest.client.delete(f"/llama/{llama_id}")
 
         assert response.status_code == 403

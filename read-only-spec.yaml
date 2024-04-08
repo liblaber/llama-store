@@ -504,14 +504,14 @@ components:
   schemas:
     APIToken:
       properties:
-        access_token:
+        accessToken:
           type: string
           title: Access Token
           description: The bearer token to use with the API. Pass this in the Authorization
             header as a bearer token.
           examples:
           - 'Authorization: Bearer 1234567890abcdef'
-        token_type:
+        tokenType:
           type: string
           title: Token Type
           description: The type of token. This will always be bearer.
@@ -520,12 +520,12 @@ components:
           - bearer
       type: object
       required:
-      - access_token
+      - accessToken
       title: APIToken
       description: An API token to use for authentication.
       examples:
-      - access_token: 1234567890abcdef
-        token_type: bearer
+      - accessToken: 1234567890abcdef
+        tokenType: bearer
     APITokenRequest:
       properties:
         email:
@@ -602,7 +602,7 @@ components:
           - 3
           - 4
           - 5
-        llama_id:
+        llamaId:
           type: integer
           title: Llama Id
           description: The ID of the llama.
@@ -614,7 +614,7 @@ components:
       - age
       - color
       - rating
-      - llama_id
+      - llamaId
       title: Llama
       description: A llama, with details of its name, age, color, and rating from
         1 to 5.
@@ -687,7 +687,7 @@ components:
         rating: 4
     LlamaId:
       properties:
-        llama_id:
+        llamaId:
           type: integer
           title: Llama Id
           description: The ID of the llama.
@@ -695,7 +695,7 @@ components:
           - 1
       type: object
       required:
-      - llama_id
+      - llamaId
       title: LlamaId
       description: A llama id.
       examples:
