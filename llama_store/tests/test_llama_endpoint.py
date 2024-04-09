@@ -10,18 +10,26 @@ valid user and API token.
 import pytest
 
 from db_migrations.versions.first import ALL_LLAMAS
+
+
 def all_llamas():
+    """
+    Converts the ALL_LLAMAS array into the right casing for
+    external API calls as llama_id is llamaId in JSON
+    """
     new_llamas = []
     for llama in ALL_LLAMAS:
-        new_llamas.append({
-            "llamaId": llama["llama_id"],
-            "name": llama["name"],
-            "age": llama["age"],
-            "color": llama["color"],
-            "rating": llama["rating"],
-        })
+        new_llamas.append(
+            {
+                "llamaId": llama["llama_id"],
+                "name": llama["name"],
+                "age": llama["age"],
+                "color": llama["color"],
+                "rating": llama["rating"],
+            }
+        )
     return new_llamas
-    
+
 
 class TestLlamaEndpoints:
     """
