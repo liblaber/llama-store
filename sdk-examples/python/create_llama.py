@@ -1,8 +1,8 @@
 """
-This script gets all the llamas from the llama store and downloads their images
+This script creates a new llama in the llama store, then sets its picture.
 
-It starts by creating a user and then creating an access token for that user. It then uses the access token to get all
-the llamas and then downloads their images.
+It starts by creating a user and then creating an access token for that user. It then uses the access token to
+create the llama and upload the picture.
 
 You will need to install the built llama store SDK to run this script.
 
@@ -11,18 +11,20 @@ You will need to install the built llama store SDK to run this script.
 - Install the SDK using the install script in the Python SDK directory
 - Ensure the llama store is running
 - Run this script
-"""
 
-from typing import List
+This script will upload a llama picture called llamapoleon-bonaparte.png. This file needs to
+be in the same directory as this script.
+"""
 from llama_store import LlamaStore
 from llama_store.net.transport.request_error import RequestError
 from llama_store.services.user import User as UserService, UserRegistration
 from llama_store.services.token import TokenService, ApiTokenRequest
-from llama_store.services.llama import LlamaService, Llama
+from llama_store.services.llama import LlamaService, LlamaCreate
 from llama_store.services.llama_picture import LlamaPictureService
+from llama_store.models.llama_color import LlamaColor
 
 # Create an instance of the llama store SDK
-llama_store = LlamaStore(access_token=None)
+llama_store = LlamaStore()
 
 # Create a user
 # For this we can use the user service
@@ -30,14 +32,13 @@ user_service: UserService = llama_store.user
 
 # Create the registration object
 user_registration = UserRegistration(email="noone@example.com", password="Password123!")
-user = None
 
 # Try to register the user. If the user already exists, a 400 will be thrown
 try:
-    user = user_service.register_user(user_registration)
+    user_service.register_user(user_registration)
     print("User created")
 except RequestError as e:
-    if e.status_code == 400:
+    if e.status == 400:
         print("User already exists - user won't be created")
     else:
         raise e
@@ -55,36 +56,28 @@ print("Token created")
 
 # Now we have the token we can set it at the SDK level so we never have to worry about it again
 llama_store.set_access_token(token.access_token)
-print("Access token set")
-print(f"Access token: {token.access_token}")
 
-# Get all the llamas
-# For this we can use the llama service
+# Create a new llama
+# For this we can use the llama service and the llama picture service
 llamas: LlamaService = llama_store.llama
-
-# Get the llamas
-results: List[Llama] = llamas.get_llamas()
-
-# Print the llama names
-print("\nLlama names:")
-for llama in results:
-    print(llama.name)
-
-# Download all the llama images
 llama_picture_service: LlamaPictureService = llama_store.llama_picture
 
-print("\nDownloading llama images:")
+# Define the create llama request
+new_llama_request = LlamaCreate(
+    name="Llamapoleon Bonaparte",
+    age=5,
+    color=LlamaColor.WHITE,
+    rating=4)
 
-# Create a pics directory if it doesn't exist
-import os
-if not os.path.exists("pics"):
-    os.makedirs("pics")
+# Create the llama
+new_llama = llamas.create_llama(new_llama_request)
+print(f"Created llama {new_llama.name} with ID {new_llama.llama_id}")
 
-for llama in results:
-    # Download the image
-    image = llama_picture_service.get_llama_picture_by_llama_id(llama.llama_id)
+# Upload the llama picture
+# Open the llama picture
+with open("../create-pics/llamapoleon-bonaparte.png", "rb") as f:
+    llama_picture = f.read()
 
-    # Save the image
-    with open(f"./pics/{llama.name}.png", "wb") as f:
-        f.write(image)
-        print(f"Downloaded image for {llama.name}")
+# Upload the picture
+llama_picture_service.create_llama_picture(new_llama.llama_id, llama_picture)
+print("Uploaded llama picture")
