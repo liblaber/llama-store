@@ -24,26 +24,27 @@
       "bundle": true,
       "exportClassDefault": true,
       "githubRepoName": "llama-store-sdk-typescript",
-      "sdkVersion": "0.0.3"
+      "sdkVersion": "0.0.4"
     },
     "python": {
       "pypiPackageName": "LlamaStore",
       "githubRepoName": "llama-store-sdk-python",
-      "sdkVersion": "0.0.3"
+      "sdkVersion": "0.0.4",
+      "liblabVersion": "2"
     },
     "java": {
       "groupId": "com.liblab",
       "githubRepoName": "llama-store-sdk-java",
-      "sdkVersion": "0.0.3"
+      "sdkVersion": "0.0.4"
     },
     "go": {
       "goModuleName": "github.com/liblaber/llama-store-sdk-go",
       "githubRepoName": "llama-store-sdk-go",
-      "sdkVersion": "0.0.3"
+      "sdkVersion": "0.0.4"
     },
     "csharp": {
       "githubRepoName": "llama-store-sdk-csharp",
-      "sdkVersion": "0.0.3"
+      "sdkVersion": "0.0.4"
     }
   },
   "publishing": {

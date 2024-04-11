@@ -15,13 +15,13 @@ from models.token import APIToken, APITokenRequest
 # Create the router
 router = APIRouter(
     prefix="/token",
-    tags=["token"],
+    tags=["Token"],
 )
 
 
 @router.post(
     path="",
-    operation_id="create_api_token",
+    operation_id="CreateAPIToken",
     response_model=APIToken,
     status_code=201,
     responses={

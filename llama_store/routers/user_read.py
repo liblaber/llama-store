@@ -15,13 +15,13 @@ from models.user import User, EMAIL_REGEX
 # Create the router
 router = APIRouter(
     prefix="/user",
-    tags=["user"],
+    tags=["User"],
 )
 
 
 @router.get(
     path="/{email}",
-    operation_id="get_user_by_email",
+    operation_id="GetUserByEmail",
     response_model=User,
     status_code=status.HTTP_200_OK,
     responses={

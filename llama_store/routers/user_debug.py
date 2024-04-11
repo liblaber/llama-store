@@ -15,12 +15,12 @@ from models.user import User
 # Create the router
 router = APIRouter(
     prefix="/user",
-    tags=["user"],
+    tags=["User"],
 )
 
 
 # If we are running in debug mode, add the get all users endpoint
-@router.get(path="", operation_id="get_all_users", response_model=List[User], status_code=status.HTTP_200_OK)
+@router.get(path="", operation_id="GetAllUsers", response_model=List[User], status_code=status.HTTP_200_OK)
 def get_all_users(db: Session = Depends(get_db)) -> List[User]:
     """
     Get all users.

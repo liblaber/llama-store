@@ -18,13 +18,13 @@ from models.user import User
 
 router = APIRouter(
     prefix="/llama",
-    tags=["llama"],
+    tags=["Llama"],
 )
 
 
 @router.post(
     path="",
-    operation_id="create_llama",
+    operation_id="CreateLlama",
     response_model=Llama,
     status_code=status.HTTP_201_CREATED,
     responses={
@@ -56,7 +56,7 @@ def create_llama(
 
 @router.put(
     path="/{llama_id}",
-    operation_id="update_llama",
+    operation_id="UpdateLlama",
     response_model=Llama,
     status_code=status.HTTP_200_OK,
     responses={
@@ -95,7 +95,7 @@ def update_llama(
     if (
         existing_llama_by_id is not None
         and existing_llama_by_name is not None
-        and existing_llama_by_id.id != existing_llama_by_name.id
+        and existing_llama_by_id.llama_id != existing_llama_by_name.llama_id
     ):
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f"Llama named {llama.name} already exists")
 
@@ -104,7 +104,7 @@ def update_llama(
 
 @router.delete(
     path="/{llama_id}",
-    operation_id="delete_llama",
+    operation_id="DeleteLlama",
     status_code=status.HTTP_204_NO_CONTENT,
     responses={
         status.HTTP_204_NO_CONTENT: {"description": "Llama deleted successfully"},
@@ -128,7 +128,7 @@ def delete_llama(
 
     # If the llama does not exist, return a 404
     if db_llama is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="LLama not found")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Llama not found")
 
     # Delete the llama and return a 204
     llama_crud.delete_llama(db, llama_id)

@@ -92,7 +92,7 @@ class TestLlamaPictureEndpoints:
         )
 
         # Get the ID
-        llama_id = response.json()["id"]
+        llama_id = response.json()["llamaId"]
 
         # load the bytes for the picture
         with open("./tests/test_images/test_llama_1.png", "rb") as file:
@@ -136,7 +136,7 @@ class TestLlamaPictureEndpoints:
         )
 
         # Get the ID
-        llama_id = response.json()["id"]
+        llama_id = response.json()["llamaId"]
 
         # load the bytes for the picture
         with open("./tests/test_images/test_llama_2.jpeg", "rb") as file:
@@ -180,7 +180,7 @@ class TestLlamaPictureEndpoints:
         )
 
         # Get the ID
-        llama_id = response.json()["id"]
+        llama_id = response.json()["llamaId"]
 
         # load the bytes for the picture
         with open("./tests/test_images/test_llama_1.png", "rb") as file:
@@ -237,7 +237,7 @@ class TestLlamaPictureEndpoints:
         )
 
         # Get the ID
-        llama_id = response.json()["id"]
+        llama_id = response.json()["llamaId"]
 
         # load the bytes for the picture
         with open("./tests/test_images/test_llama_1.png", "rb") as file:
@@ -288,7 +288,7 @@ class TestLlamaPictureEndpoints:
         )
 
         # Get the ID
-        llama_id = response.json()["id"]
+        llama_id = response.json()["llamaId"]
 
         # load the bytes for the picture
         with open("./tests/test_images/test_llama_1.png", "rb") as file:
@@ -338,7 +338,7 @@ class TestLlamaPictureEndpoints:
         )
 
         # Get the ID
-        llama_id = response.json()["id"]
+        llama_id = response.json()["llamaId"]
 
         # load the bytes for the picture
         with open("./tests/test_images/test_llama_1.png", "rb") as file:

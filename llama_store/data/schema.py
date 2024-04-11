@@ -38,7 +38,7 @@ class DBLlama(Base):
 
     __tablename__ = "llamas"
 
-    id = Column(Integer, primary_key=True, index=True)
+    llama_id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
     age = Column(Integer, index=False, nullable=False)
     color = Column(String, index=False, nullable=False)
@@ -53,6 +53,6 @@ class DBLlamaPicture(Base):
 
     __tablename__ = "llama_picture_locations"
 
-    id = Column(Integer, primary_key=True, index=True)
+    llama_picture_id = Column(Integer, primary_key=True, index=True)
     llama_id = Column(Integer, index=True)
     image_file_location = Column(String, index=False, nullable=False)

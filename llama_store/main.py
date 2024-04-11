@@ -54,19 +54,19 @@ schema.Base.metadata.create_all(bind=engine)
 
 tags_metadata = [
     {
-        "name": "llama",
+        "name": "Llama",
         "description": "Get the llamas",
     },
     {
-        "name": "llama-picture",
+        "name": "LlamaPicture",
         "description": "Get the llama pictures",
     },
     {
-        "name": "user",
+        "name": "User",
         "description": "Register users",
     },
     {
-        "name": "token",
+        "name": "Token",
         "description": "Manage API Tokens",
     },
 ]

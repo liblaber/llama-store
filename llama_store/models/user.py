@@ -6,7 +6,7 @@ User models. These are used by the user endpoints.
 
 import re
 from typing import Annotated
-from pydantic import BaseModel, StringConstraints, validator, Field
+from pydantic import BaseModel, ConfigDict, StringConstraints, validator, Field
 
 EMAIL_REGEX = r".+\@.+\..+"
 PASSWORD_REGEX = re.compile(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$")
@@ -51,8 +51,8 @@ class UserRegistration(UserBase):
         )
         return v
 
-    model_config = {
-        "json_schema_extra": {
+    model_config = ConfigDict(
+        json_schema_extra={
             "examples": [
                 {
                     "email": "noone@example.com",
@@ -61,8 +61,8 @@ class UserRegistration(UserBase):
             ],
             "description": "A new user of the llama store.",
         },
-        "from_attributes": True,
-    }
+        from_attributes=True,
+    )
 
 
 class User(UserBase):
@@ -75,8 +75,8 @@ class User(UserBase):
         examples=[1, 2, 3],
     )
 
-    model_config = {
-        "json_schema_extra": {
+    model_config = ConfigDict(
+        json_schema_extra={
             "examples": [
                 {
                     "id": "1",
@@ -85,5 +85,5 @@ class User(UserBase):
             ],
             "description": "A user of the llama store",
         },
-        "from_attributes": True,
-    }
+        from_attributes=True,
+    )
