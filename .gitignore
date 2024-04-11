@@ -183,5 +183,4 @@ node_modules
 sdk-examples/python/pics
 sdk-examples/rest/pics
 llama-store.sln
-.mono/registry/CurrentUser/software/microsoft/csdevkit/telemetry/persistentpropertybag/microsoft.visualstudio.code.servicehost/values.xml
-.mono/registry/CurrentUser/software/microsoft/csdevkit/v1/pids/4041_133570736281465285/values.xml
+.mono/
