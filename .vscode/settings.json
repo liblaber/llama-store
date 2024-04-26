@@ -18,5 +18,10 @@
         "regexes",
         "uvicorn",
         "venv"
-    ]
+    ],
+    "python.testing.pytestArgs": [
+        "llama_store"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }

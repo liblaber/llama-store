@@ -36,7 +36,7 @@ token_response = requests.post(BASE_URL + "token", json=token_request, timeout=5
 token_response_json = token_response.json()
 
 # Get the token from the response
-token = token_response_json["access_token"]
+token = token_response_json["accessToken"]
 headers = {"Authorization": f"Bearer {token}"}
 
 # Create the new llama request
@@ -51,7 +51,7 @@ new_llama_request = {
 llama_response = requests.post(BASE_URL + "llama", json=new_llama_request, timeout=5, headers=headers)
 print(f"Response status code: {llama_response.status_code}")
 print(json.dumps(llama_response.json(), indent=2))
-id = llama_response.json()["id"]
+id = llama_response.json()["llamaId"]
 
 # Upload the llama picture
 # Open the llama picture

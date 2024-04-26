@@ -36,7 +36,7 @@ token_response = requests.post(BASE_URL + "token", json=token_request, timeout=5
 token_response_json = token_response.json()
 
 # Get the token from the response
-token = token_response_json["access_token"]
+token = token_response_json["accessToken"]
 headers = {"Authorization": f"Bearer {token}"}
 
 # Get the llamas
@@ -59,7 +59,7 @@ else:
         os.remove(f"./pics/{file}")
 
 for llama in llamas_response_json:
-    llama_id = llama["id"]
+    llama_id = llama["llamaId"]
 
     # Download the image
     llama_picture_response = requests.get(BASE_URL + f"llama/{llama_id}/picture", timeout=5, headers=headers)
