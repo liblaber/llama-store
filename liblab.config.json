@@ -7,7 +7,8 @@
     "go",
     "java",
     "python",
-    "typescript"
+    "typescript",
+    "php"
   ],
   "auth": [
     "bearer"
@@ -44,6 +45,10 @@
     },
     "csharp": {
       "githubRepoName": "llama-store-sdk-csharp",
+      "sdkVersion": "0.0.4"
+    },
+    "php": {
+      // "githubRepoName": "llama-store-sdk-php",
       "sdkVersion": "0.0.4"
     }
   },

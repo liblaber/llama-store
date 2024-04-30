@@ -22,11 +22,11 @@ class Response:
 
 class CustomHook:
 
-    def before_request(self, request: Request):
+    def before_request(self, request: Request, **kwargs):
         print(f"Before request on URL {request.url} with method {request.method.upper()}")
 
-    def after_response(self, request: Request, response: Response):
+    def after_response(self, request: Request, response: Response, **kwargs):
         print(f"After response on URL {request.url} with method {request.method.upper()}, returning status {response.status}")
 
-    def on_error(self, error: Exception, request: Request, response: Response):
+    def on_error(self, error: Exception, request: Request, response: Response, **kwargs):
         print(f"On error - {error}")

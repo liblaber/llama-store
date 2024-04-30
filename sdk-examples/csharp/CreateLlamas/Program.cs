@@ -52,4 +52,4 @@ var newLlamaRequest = new LlamaCreate("Llamapoleon Bonaparte", 5, LlamaColor.Whi
 
 // Create the llama
 var newLlama = await client.Llama.CreateLlamaAsync(newLlamaRequest);
-Console.WriteLine($"Created llama {newLlama.Name} with ID {newLlama.Id}");
+Console.WriteLine($"Created llama {newLlama.Name} with ID {newLlama.LlamaId}");

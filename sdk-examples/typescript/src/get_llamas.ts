@@ -46,7 +46,7 @@ import { Llamastore, CreateApiTokenRequest, RegisterUserRequest, GetLlamasRespon
     const token = await tokenService.createApiToken(tokenRequest);
     console.log('Token created');
 
-    llamaStore.setAccessToken(token.access_token);
+    llamaStore.setAccessToken(token.accessToken);
 
     // Get all the llamas
     // For this we can use the llama service
