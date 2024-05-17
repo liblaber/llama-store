@@ -44,7 +44,7 @@ function CodeTab({ children, hidden, className }: any): JSX.Element {
  * Renders a language code tab. This creates a code tab, with an API code block
  * containing the code snippet for the language.
  */
-function LanguageCodeTab({ language }): JSX.Element {
+function LanguageCodeTab(language: Language): JSX.Element {
   return (
     <CodeTab
       value={language.language}
@@ -64,6 +64,22 @@ function LanguageCodeTab({ language }): JSX.Element {
       </ApiCodeBlock>
     </CodeTab>
   );
+}
+
+function GetSnippetsForLanguage(language: Language, props: Props) {
+  // load the snippets
+  const snippets = require(`/snippets/${language.language}.json`);
+
+  // convert the current API endpoint to the snippet name
+  // in the same format as the snippets.
+  // In this case, path parameters in the path name are `:name`, 
+  // such as `:llamaId`, and we need these as `{llamaId}`.
+  var endpoint = props.postman.url.path
+    .map((p: string) => p.startsWith(":") ? `/{${p.replace(":", "")}}` : `/${p}`)
+    .join("");
+
+  // Get the sample and set it on the language object
+  language.sample = snippets.endpoints[endpoint][props.postman.method.toLowerCase()];
 }
 
 /**
@@ -99,24 +115,7 @@ export default function CodeSnippetsWrapper(props: Props): JSX.Element {
 
   // Get the code snippet data for the selected language
   // These come from a generated JSON file in the static/snippets folder
-  langs.forEach((language) => {
-    // load the snippets
-    const snippets = require(`/snippets/${language.language}.json`);
-
-    // convert the current API endpoint to the snippet name
-    // in the same format as the snippets.
-    // In this case, path parameters in the path name are `:name`, 
-    // such as `:llamaId`, and we need these as `{llamaId}`.
-    var endpoint = props.postman.url.path
-      .map((p: string) =>
-        p.startsWith(":") ? `/{${p.replace(":", "")}}` : `/${p}`
-      )
-      .join("");
-
-    // Get the sample and set it on the language object
-    language.sample =
-    snippets.endpoints[endpoint][props.postman.method.toLowerCase()];
-  });
+  langs.forEach((language) => GetSnippetsForLanguage(language, props));
 
   // Render the code tabs with the language samples
   return (
@@ -131,7 +130,7 @@ export default function CodeSnippetsWrapper(props: Props): JSX.Element {
         languageSet={langs}
         lazy
       >
-        {langs.map((lang) => LanguageCodeTab({ language: lang }))}
+        {langs.map((lang) => LanguageCodeTab(lang))}
       </CodeTabs>
     </>
   );
