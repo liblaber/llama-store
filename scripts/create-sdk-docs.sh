@@ -1,5 +1,6 @@
 # Copy the README
 cp README.md ./docs/docs/_readme.md
+cp ./img/* ./docs/static/img/
 
 # Build the SDKs
 liblab build --yes

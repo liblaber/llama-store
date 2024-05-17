@@ -19,6 +19,7 @@ class UserBase(BaseModel):
 
     email: Annotated[str, StringConstraints(min_length=5, max_length=254, pattern=EMAIL_REGEX)] = Field(
         description="The email address of the user. This must be unique across all users.",
+        examples=["llama@liblab.com"],
     )
 
 
