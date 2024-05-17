@@ -1,0 +1,66 @@
+---
+id: get-llama-by-id
+title: "Get Llama"
+description: "Get a llama by ID."
+sidebar_label: "Get Llama"
+hide_title: true
+hide_table_of_contents: true
+api: eJydVm1v2zYQ/ivcbcA2gPBL6qyFMAxIl67z0HVB420fDGOgpLPFhiIVkkriCfrvw5GW/KakwPIlsng8Pvfcc4/YgBcbB8kSPihRClhxyNFlVlZeGg0JvEfPBFO0yNItm1+PgIOp0AoKmOcxJGx+u51fAweHWW2l30KybOAtCosWkuWqXXGohBUlerQuLGpRIiQQkv8jc+Ag6chK+AI4WLyvpcUcEm9r5OCyAksBSQN+W9E+qT1u0MIp5EWBEfC3jgVE+CTKSmEocwocLqhML72iLAE6m+fQfiEPFWDRVUY7StXAxWRC/443hXQOOGRGe9SeIkRVKZkFwsafHYU1B9VUluj0MiaNnPQ1Om+l3gCHUjx9QL3xBSTTyWQP/yPFDyGnRMysme+qGLFFIR0ra+dZiqzW8r5GJjJrnGNCqRjlRieEKZmm230W4KDE8ZtVy0FscLAzHcyrzTBKsTkGyaRmWxT2FMYl/4G/poMyo4wNpCr1xzrI6JQq1HVJyFNrHjVweCykp9NTJbI74LCxYnumgJ9D3iGI4UQCuRuDUVDCC3F7xk+ofBlQy4GGSm8GiSzFkyyprksOpdTxebov4lPcOgQsZj2meW1NyabMG3Z5gnLKL/grPuOXBCgE05C/0Np+gIbOnl+/xMh01ba8y2zSz5j5o8FfxnGI8up639O0h3fazDMoV/F4zh6lL1iOXkjlCJn0LkwKJyXy2EPOhM471p4nqomiv+w12fe3N7Qk2E1nc2eD1LV7RoKSHsvgAN9YXEMCX48zU1ZGo/ZuHN3CjWN1Lf1xmE2m5/4z1w9CyZxd3cyZN3eoIUS+Oo/8aDwTtS9QezInzEfsFnXOBDvJQDNJsK9qXxgr/w1GxgoUOdpRTD97xgiZNp6tTa2Dvc4uLs7j/qLDYsp31ob+/k/rjG2lp57L4wBlsqNVobeDFtLyM7m3q71QhaV5PZCciQCpxNJthty7C/0dnSPV9MmeDw1ksAWtfmlIqK549C7uYB729EZ2ny/jOtI3dFgX8uticXOWMIqxRF8YUvwGaUf4hicwDlIfN91EtOF+YB+6G0BtFSRQeF8l47EymVCFcT55M3kzOZvhG2vyYL3dBeOWdBA7210zejopJezuDPQ7jQF89/CLsaXwkMBvfy9CxVKvTdh+ZGq33likQXj+jsFcF/MVo7tS7y06fFO3prZsLR6MlR4PvrAkcZH5/Ref7EGJFPgBJ45ICa9HmSnH1DtiLiKYjKaj1/SqMs6XQh+kIhyDPtjsR2v4Yrdjz+OTH1dKyKDpAKjZtXQJnXslvc2tOFDbaLFpUuHwT6vall7f12jpIrji8CCsFCmRu2wgl46ec0jWQjl8AeZ3n3ZC/56d3esG0Xbq1qTtB6Fq+gUc7nB7eNcMAx09LCCKy1dZhpU/2HjmPyTAXuvv3y3o41QTMb30TqR26C/HoH6MqmULMtmfeog71161bfsfpc7dZg==
+sidebar_class_name: "get api-method"
+info_path: docs/API/llama-store-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Get Llama</h1>
+
+<MethodEndpoint method={"get"} path={"/llama/{llama_id}"}></MethodEndpoint>
+
+
+
+Get a llama by ID.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"llama_id","in":"path","required":true,"schema":{"type":"integer","description":"The llama's ID","examples":["1","2"],"title":"Llama Id"},"description":"The llama's ID"}}></ParamsItem></ul></div></details><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"200"} value={"200"}><div>
+
+Llamas
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={true} schemaName={"Name (string)"} qualifierMessage={"**Possible values:** `<= 100 characters`"} schema={{"type":"string","maxLength":100,"title":"Name","description":"The name of the llama. This must be unique across all llamas.","examples":["libby the llama","labby the llama"]}}></SchemaItem><SchemaItem collapsible={false} name={"age"} required={true} schemaName={"Age (integer)"} qualifierMessage={undefined} schema={{"type":"integer","title":"Age","description":"The age of the llama in years.","examples":[5,6,7]}}></SchemaItem><SchemaItem collapsible={false} name={"color"} required={true} schemaName={"LlamaColor (string)"} qualifierMessage={"**Possible values:** [`brown`, `white`, `black`, `gray`]"} schema={{"type":"string","enum":["brown","white","black","gray"],"title":"LlamaColor","description":"The color of a llama."}}></SchemaItem><SchemaItem collapsible={false} name={"rating"} required={true} schemaName={"Rating (integer)"} qualifierMessage={"**Possible values:** `>= 1` and `<= 5`"} schema={{"type":"integer","maximum":5,"minimum":1,"title":"Rating","description":"The rating of the llama from 1 to 5.","examples":[1,2,3,4,5]}}></SchemaItem><SchemaItem collapsible={false} name={"llamaId"} required={true} schemaName={"Llama Id (integer)"} qualifierMessage={undefined} schema={{"type":"integer","title":"Llama Id","description":"The ID of the llama.","examples":[1]}}></SchemaItem><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><SchemaItem collapsible={false} name={"$ref"} required={false} schemaName={""} qualifierMessage={undefined} schema={"#/components/schemas/Llama"}></SchemaItem><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"name\": \"string\",\n  \"age\": 0,\n  \"color\": \"brown\",\n  \"rating\": 0,\n  \"llamaId\": 0\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Invalid API token
+
+</div><div></div></TabItem><TabItem label={"403"} value={"403"}><div>
+
+Not authenticated. Send a valid API token in the Authorization header.
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Llama not found
+
+</div><div></div></TabItem><TabItem label={"422"} value={"422"}><div>
+
+Validation Error
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>detail</strong><span className={"openapi-schema__name"}> object[]</span></span></summary><div style={{"marginLeft":"1rem"}}><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>loc</strong><span className={"openapi-schema__name"}> object[]</span><span className={"openapi-schema__divider"}></span><span className={"openapi-schema__required"}>required</span></span></summary><div style={{"marginLeft":"1rem"}}><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><div><span className={"badge badge--info"}>anyOf</span><SchemaTabs><TabItem label={"MOD1"} value={"0-item-properties"}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+string
+
+</div></TabItem><TabItem label={"MOD2"} value={"1-item-properties"}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+integer
+
+</div></TabItem></SchemaTabs></div><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></div></details></SchemaItem><SchemaItem collapsible={false} name={"msg"} required={true} schemaName={"Message (string)"} qualifierMessage={undefined} schema={{"type":"string","title":"Message"}}></SchemaItem><SchemaItem collapsible={false} name={"type"} required={true} schemaName={"Error Type (string)"} qualifierMessage={undefined} schema={{"type":"string","title":"Error Type"}}></SchemaItem><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

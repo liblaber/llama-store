@@ -1,0 +1,74 @@
+---
+id: create-llama-picture
+title: "Create Llama Picture"
+description: "Create a picture for a llama. The picture is sent as a PNG as binary data in the body of the request."
+sidebar_label: "Create Llama Picture"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9Vm2P20QQ/ivLfALJJLmjEsVCSNcWyiFoIy7Ah2uEJvYk3tbedXfH1zOW/zuaXTtxLjnKi8SnbOx52XnmeWbcAePOQ3oLP5ZY4VJn3DiCdQI5+czpmrU1kMJzR8ikUNXRQm2tU6hKcZqpVUH7F9orT4YVeoVq+eqlHDbaoGtVjoxKG8UFqY3NW2W34ezofUOeZ5CArcmh5LzO91mPbpaAp6xxmltIbzt4RujIQXq77tcJ1OiwIibnw0uDFUEK4ZK/6xwS0FJLjVxAApJVO8ohZddQAj4rqEJIO+C2Fj9tmHbk4CEWUu31i/HyIbriAllxof0Uh60VZ7rHqi4pgHwBCVwKuqy5lByhNnWdQ/+fskjxjnxtjZdEHVwuLuTnOGRMNrpmAdxc+SbLyPttU5YtJJBZw2RYvLGuS52FdszfegnRTVCqnTSLdUwYLihNOwPfSbF/o9bZMXIX675Pxsh285YyPmrh7f4CD8E9k+5qgFPnD7J0B66kcAH9uu8l7ZPF4hTM1YG4kczaK6pqbiF4nIH/2txhqXN1tbxWbN+RiZZfnFq+sqyw4YIMC/6Uz9QNmVyhehBhVNNVw4V1+o/QK1UQ5uRmMfyTx3hgLKutbUwe7b76GF+wdIR5q+hee/bB6fLy1OlXuWG8x7fOBQX8S0rlxKhLOWmmyp/hnM2O3qJpX29DGweieHba7KBPTkjZrw90QuewndLUxgtKiZXfTSg9xDuY/kTe445gH+xx0wCGWsnbj1LZZhBTD3YTTh/gjeg+XsaLCN+5ZKPJ96vV8iRg5PxA7Wc2b6WqSQt1hTua10aACaYVcWFFMbX1Ej3M1xTmQUvzbpRUP68nM9zdjVO6cSWkUDDX6Xxe2gzLwnpOny6eLk6Uu3Q2D8NuXAI3wp3IhnEV7FsgIWGY6/J/Ew2S4fCddRUypPDDb6uAkjZbG9yPxtUNW0eiuLNTKw4SP9p8ol4Sq0hcr6xRWJaqtY1TW7yzTvPg4WeDLDALmI6bSm9K3EAywcQLKOHxLLPVXPotyMUbLGYXsy/lkSBfoZmEGhZ2rOGwPI8qmLT1f1vwQ2+Y7nlel6iDykK53UCcYZRDAulkc9eHLxOhh5h13QY9/eLKvpfH7xty8lGwTuAOncaNNPG2g1x7OeeQbrH09BcYfPrzIMLP1D/c8WerGnVpRJV3WDbyDxJ4R+30qySMojiyw33j6+fxVp+HgXFwP4hPhlo0vcoyqnlidDJkRTF7lS5f36xEBIOyK5uLj8MPMoXwA6TwBt6AFCAraKKnB/qZDtrjGr+OUlQrWVHf7Csedp4s1T8B1VuKWA==
+sidebar_class_name: "post api-method"
+info_path: docs/API/llama-store-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1 className={"openapi__heading"}>Create Llama Picture</h1>
+
+<MethodEndpoint method={"post"} path={"/llama/{llama_id}/picture"}></MethodEndpoint>
+
+
+
+Create a picture for a llama. The picture is sent as a PNG as binary data in the body of the request.
+
+## Request
+
+<details style={{"marginBottom":"1rem"}} className={"openapi-markdown__details"} data-collapsed={false} open={true}><summary style={{}}><h3 className={"openapi-markdown__details-summary-header-params"}>Path Parameters</h3></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"llama_id","in":"path","required":true,"schema":{"type":"integer","description":"The ID of the llama that this picture is for","examples":["1","2"],"title":"Llama Id"},"description":"The ID of the llama that this picture is for"}}></ParamsItem></ul></div></details><MimeTabs className={"openapi-tabs__mime"}><TabItem label={"image/png"} value={"image/png-schema"}><details style={{}} className={"openapi-markdown__details mime"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-mime"}><h3 className={"openapi-markdown__details-summary-header-body"}>Body</h3></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}>any</ul></details></TabItem></MimeTabs><div><div><ApiTabs label={undefined} id={undefined}><TabItem label={"201"} value={"201"}><div>
+
+Llama picture created successfully
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"llamaId"} required={true} schemaName={"Llama Id (integer)"} qualifierMessage={undefined} schema={{"type":"integer","title":"Llama Id","description":"The ID of the llama.","examples":[1]}}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"llamaId\": 0\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"400"} value={"400"}><div>
+
+The request body is empty
+
+</div><div></div></TabItem><TabItem label={"401"} value={"401"}><div>
+
+Invalid API token
+
+</div><div></div></TabItem><TabItem label={"403"} value={"403"}><div>
+
+Not authenticated. Send a valid API token in the Authorization header.
+
+</div><div></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Llama not found
+
+</div><div></div></TabItem><TabItem label={"409"} value={"409"}><div>
+
+Llama picture already exists
+
+</div><div></div></TabItem><TabItem label={"422"} value={"422"}><div>
+
+Validation Error
+
+</div><div><MimeTabs className={"openapi-tabs__mime"} schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs className={"openapi-tabs__schema"}><TabItem label={"Schema"} value={"Schema"}><details style={{}} className={"openapi-markdown__details response"} data-collapsed={false} open={true}><summary style={{}} className={"openapi-markdown__details-summary-response"}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>detail</strong><span className={"openapi-schema__name"}> object[]</span></span></summary><div style={{"marginLeft":"1rem"}}><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}} className={"openapi-markdown__details"}><summary style={{}}><span className={"openapi-schema__container"}><strong className={"openapi-schema__property"}>loc</strong><span className={"openapi-schema__name"}> object[]</span><span className={"openapi-schema__divider"}></span><span className={"openapi-schema__required"}>required</span></span></summary><div style={{"marginLeft":"1rem"}}><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}>Array [</div></li><div><span className={"badge badge--info"}>anyOf</span><SchemaTabs><TabItem label={"MOD1"} value={"0-item-properties"}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+string
+
+</div></TabItem><TabItem label={"MOD2"} value={"1-item-properties"}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+integer
+
+</div></TabItem></SchemaTabs></div><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></div></details></SchemaItem><SchemaItem collapsible={false} name={"msg"} required={true} schemaName={"Message (string)"} qualifierMessage={undefined} schema={{"type":"string","title":"Message"}}></SchemaItem><SchemaItem collapsible={false} name={"type"} required={true} schemaName={"Error Type (string)"} qualifierMessage={undefined} schema={{"type":"string","title":"Error Type"}}></SchemaItem><li><div style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}>]</div></li></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        0\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div></div>
+      

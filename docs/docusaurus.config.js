@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'liblab Llama Store',
+  tagline: 'Llamas are cool',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -18,11 +18,11 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'liblab', // Usually your GitHub org/user name.
+  projectName: 'llama-store', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -46,13 +46,6 @@ const config = {
             docLayoutComponent: "@theme/DocPage",
             docItemComponent: "@theme/ApiItem" // derived from docusaurus-theme-openapi-docs
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -69,7 +62,7 @@ const config = {
         config: {
           llamastore: { // the <id> referenced when running CLI commands
             specPath: "../spec.yaml", // path to OpenAPI spec, URLs supported
-            outputDir: "docs/api/llamastore", // output directory for generated files
+            outputDir: "docs/API", // output directory for generated files
             sidebarOptions: { // optional, instructs plugin to generate sidebar.js
               groupPathsBy: "tag", // group sidebar items by operation "tag"
             },
@@ -85,24 +78,33 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      
       navbar: {
-        title: 'My Site',
+        title: 'liblab Llama Store',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'liblab Logo',
           src: 'img/logo.svg',
+          href: 'https://github.com/liblaber/llama-store',
+          srcDark: 'img/logo-dark.svg',
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
+            to: 'https://developers.liblab.com?utm_source=llama-store&utm_medium=content&utm_campaign=none',
+            label: 'Docs',
             position: 'right',
+            rel: '',
+          },
+          {
+            to: 'https://blog.liblab.com?utm_source=llama-store&utm_medium=content&utm_campaign=none',
+            label: 'Blog',
+            position: 'right',
+            rel: '',
+          },
+          {
+            to: 'https://liblab.com/join?utm_source=llama-store&utm_medium=content&utm_campaign=none',
+            label: 'Get Started',
+            position: 'right',
+            rel: '',
           },
         ],
       },
@@ -110,46 +112,62 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
+            label: 'Discord',
+            to: 'https://discord.gg/CnMRJMfHQc',
           },
           {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-            ],
+            label: 'GitHub',
+            to: 'https://github.com/liblaber',
           },
           {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
+            label: 'YouTube',
+            to: 'https://youtube.com/@liblaber',
+          },
+          {
+            label: 'Twitter',
+            to: 'https://twitter.com/liblaber',
+          },
+          {
+            label: 'LinkedIn',
+            to: 'https://www.linkedin.com/company/liblaber',
+          },
+          {
+            label: 'liblab.com',
+            to: 'https://liblab.com/?utm_source=llama-store&utm_medium=content&utm_campaign=none',
+            rel: '',
+          },
+          {
+            label: 'About',
+            to: 'https://liblab.com/about?utm_source=llama-store&utm_medium=content&utm_campaign=none',
+            rel: '',
+          },
+          {
+            label: 'Blog',
+            to: 'https://blog.liblab.com?utm_source=llama-store&utm_medium=content&utm_campaign=none',
+            rel: '',
+          },
+          {
+            label: 'Contact us',
+            to: 'https://liblab.com/contact?utm_source=llama-store&utm_medium=content&utm_campaign=none',
+            rel: '',
+          },
+          {
+            label: 'Careers',
+            to: 'https://liblab.com/careers?utm_source=llama-store&utm_medium=content&utm_campaign=none',
+            rel: '',
+          },
+          {
+            label: 'Terms',
+            to: 'https://liblab.com/terms?utm_source=llama-store&utm_medium=content&utm_campaign=none',
+            rel: '',
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} liblab, Inc.`,
+      },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
       },
       prism: {
         theme: lightCodeTheme,
