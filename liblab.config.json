@@ -14,6 +14,7 @@
     "bearer"
   ],
   "docs": [
+    "api",
     "snippets"
   ],
   "customizations": {
@@ -44,7 +45,8 @@
     "java": {
       "groupId": "com.liblab",
       "githubRepoName": "llama-store-sdk-java",
-      "sdkVersion": "0.0.4"
+      "sdkVersion": "0.0.4",
+      "liblabVersion": "1"
     },
     "go": {
       "goModuleName": "github.com/liblaber/llama-store-sdk-go",
