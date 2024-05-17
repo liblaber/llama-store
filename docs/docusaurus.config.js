@@ -43,8 +43,9 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-            docLayoutComponent: "@theme/DocPage",
-            docItemComponent: "@theme/ApiItem" // derived from docusaurus-theme-openapi-docs
+          docLayoutComponent: "@theme/DocPage",
+          docItemComponent: "@theme/ApiItem", // derived from docusaurus-theme-openapi-docs
+          routeBasePath: '/', // Serve the docs at the site's root
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -78,7 +79,7 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
-      
+
       navbar: {
         title: 'liblab Llama Store',
         logo: {
