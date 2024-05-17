@@ -48,7 +48,7 @@ var fs = require('fs/promises');
     const token = await tokenService.createApiToken(tokenRequest);
     console.log('Token created');
 
-    llamaStore.setAccessToken(token.access_token);
+    llamaStore.setAccessToken(token.accessToken);
 
     // Define the create llama request
     const newLlamaRequest: CreateLlamaRequest = {
@@ -60,5 +60,5 @@ var fs = require('fs/promises');
 
     // Create the llama
     const newLlama = await llamaStore.llama.createLlama(newLlamaRequest);
-    console.log(`Created llama ${newLlama.name} with ID ${newLlama.id}`);
+    console.log(`Created llama ${newLlama.name} with ID ${newLlama.llamaId}`);
 })();

@@ -69,5 +69,5 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("Llama created: ", *newLlama.Data.Name, " with ID: ", *newLlama.Data.Id)
+	fmt.Println("Llama created: ", *newLlama.Data.Name, " with ID: ", *newLlama.Data.LlamaId)
 }
