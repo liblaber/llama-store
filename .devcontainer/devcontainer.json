@@ -43,7 +43,8 @@
 				"tamasfe.even-better-toml",
 				"streetsidesoftware.code-spell-checker",
 				"remcohaszing.schemastore",
-				"ms-dotnettools.csdevkit"
+				"ms-dotnettools.csdevkit",
+				"esbenp.prettier-vscode"
 			]
 		}
 	},

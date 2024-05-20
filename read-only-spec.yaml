@@ -536,6 +536,8 @@ components:
           title: Email
           description: The email address of the user. This must be unique across all
             users.
+          examples:
+          - llama@liblab.com
         password:
           type: string
           maxLength: 254
@@ -710,6 +712,8 @@ components:
           title: Email
           description: The email address of the user. This must be unique across all
             users.
+          examples:
+          - llama@liblab.com
         id:
           type: integer
           title: Id
@@ -737,6 +741,8 @@ components:
           title: Email
           description: The email address of the user. This must be unique across all
             users.
+          examples:
+          - llama@liblab.com
         password:
           type: string
           maxLength: 254

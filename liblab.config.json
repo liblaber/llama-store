@@ -13,11 +13,19 @@
   "auth": [
     "bearer"
   ],
-  "createDocs": true,
+  "docs": [
+    "api",
+    "snippets"
+  ],
   "customizations": {
     "devContainer": true,
     "license": {
       "type": "MIT"
+    },
+    "documentation": {
+      "snippets": {
+        "format": "json"
+      }
     }
   },
   "languageOptions": {
@@ -25,7 +33,8 @@
       "bundle": true,
       "exportClassDefault": true,
       "githubRepoName": "llama-store-sdk-typescript",
-      "sdkVersion": "0.0.4"
+      "sdkVersion": "0.0.4",
+      "liblabVersion": "2"
     },
     "python": {
       "pypiPackageName": "LlamaStore",
@@ -36,20 +45,24 @@
     "java": {
       "groupId": "com.liblab",
       "githubRepoName": "llama-store-sdk-java",
-      "sdkVersion": "0.0.4"
+      "sdkVersion": "0.0.4",
+      "liblabVersion": "1"
     },
     "go": {
       "goModuleName": "github.com/liblaber/llama-store-sdk-go",
       "githubRepoName": "llama-store-sdk-go",
-      "sdkVersion": "0.0.4"
+      "sdkVersion": "0.0.4",
+      "liblabVersion": "2"
     },
     "csharp": {
       "githubRepoName": "llama-store-sdk-csharp",
-      "sdkVersion": "0.0.4"
+      "sdkVersion": "0.0.4",
+      "liblabVersion": "2"
     },
     "php": {
       // "githubRepoName": "llama-store-sdk-php",
-      "sdkVersion": "0.0.4"
+      "sdkVersion": "0.0.4",
+      "liblabVersion": "2"
     }
   },
   "publishing": {

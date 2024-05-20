@@ -184,3 +184,4 @@ sdk-examples/python/pics
 sdk-examples/rest/pics
 llama-store.sln
 .mono/
+docs/static/snippets/

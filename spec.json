@@ -760,7 +760,10 @@
             "minLength": 5,
             "pattern": ".+\\@.+\\..+",
             "title": "Email",
-            "description": "The email address of the user. This must be unique across all users."
+            "description": "The email address of the user. This must be unique across all users.",
+            "examples": [
+              "llama@liblab.com"
+            ]
           },
           "password": {
             "type": "string",
@@ -990,7 +993,10 @@
             "minLength": 5,
             "pattern": ".+\\@.+\\..+",
             "title": "Email",
-            "description": "The email address of the user. This must be unique across all users."
+            "description": "The email address of the user. This must be unique across all users.",
+            "examples": [
+              "llama@liblab.com"
+            ]
           },
           "id": {
             "type": "integer",
@@ -1025,7 +1031,10 @@
             "minLength": 5,
             "pattern": ".+\\@.+\\..+",
             "title": "Email",
-            "description": "The email address of the user. This must be unique across all users."
+            "description": "The email address of the user. This must be unique across all users.",
+            "examples": [
+              "llama@liblab.com"
+            ]
           },
           "password": {
             "type": "string",

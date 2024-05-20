@@ -415,33 +415,3 @@ To launch the documentation, you need to do the following:
 You can then open the documentation in your browser at [http://localhost:3000](http://localhost:3000). You will be greated by this readme rendered as docs, with the API reference on the side. Expand the API reference to see the full API documentation for each endpoint, with SDK snippets.
 
 ![A screenshot of the llama store docs showing the Create API token endpoint and example C# code](/img/llama-store-docs.webp)
-
-### How SDK snippets work
-
-To show the SDK snippets, the Docusaurus OpenAPI theme was [swizzled](https://docusaurus.io/docs/swizzling) to wrap the `APIExplorer/CodeSnippets` component. In the default theme, this component shows examples of calling the API directly in different programming languages.
-
-The swizzled version loads the SDK snippets created with your SDK, and shows those instead. You can see this component at [`docs/src/theme/APIExplorer/CodeSnippets/index.tsx`](./docs/src/theme/APIExplorer/CodeSnippets/index.tsx).
-
-The SDK snippets are in a JSON file that lists the snippets by endpoint and method:
-
-```json title=python.json
-{
-  "endpoints": {
-    "/llama": {
-      "get": "from llama_store import LlamaStore, Environment\n\nsdk = LlamaStore(\n    access_token=\"YOUR_ACCESS_TOKEN\",\n    base_url=Environment.DEFAULT.value\n)\n\nresult = sdk.llama.get_llamas()\n\nprint(result)\n",
-      "post": "from llama_store import LlamaStore, Environment\nfrom llama_store.models import LlamaCreate\n\nsdk = LlamaStore(\n    access_token=\"YOUR_ACCESS_TOKEN\",\n    base_url=Environment.DEFAULT.value\n)\n\nrequest_body = LlamaCreate(\n    name=\"libby the llama\",\n    age=5,\n    color=\"brown\",\n    rating=1\n)\n\nresult = sdk.llama.create_llama(request_body=request_body)\n\nprint(result)\n"
-    },
-    "/llama/{llama_id}": {
-      "get": "from llama_store import LlamaStore, Environment\n\nsdk = LlamaStore(\n    access_token=\"YOUR_ACCESS_TOKEN\",\n    base_url=Environment.DEFAULT.value\n)\n\nresult = sdk.llama.get_llama_by_id(llama_id=\"1\")\n\nprint(result)\n",
-      "put": "from llama_store import LlamaStore, Environment\nfrom llama_store.models import LlamaCreate\n\nsdk = LlamaStore(\n    access_token=\"YOUR_ACCESS_TOKEN\",\n    base_url=Environment.DEFAULT.value\n)\n\nrequest_body = LlamaCreate(\n    name=\"libby the llama\",\n    age=5,\n    color=\"brown\",\n    rating=1\n)\n\nresult = sdk.llama.update_llama(\n    request_body=request_body,\n    llama_id=\"1\"\n)\n\nprint(result)\n",
-      "delete": "from llama_store import LlamaStore, Environment\n\nsdk = LlamaStore(\n    access_token=\"YOUR_ACCESS_TOKEN\",\n    base_url=Environment.DEFAULT.value\n)\n\nresult = sdk.llama.delete_llama(llama_id=\"1\")\n\nprint(result)\n"
-    },
-    ...
-  }
-  ...
-}
-```
-
-Inside the component, the JSON file is loaded, and using the current API endpoint and method, the relevant snippet is extracted from the JSON and shown in an `ApiCodeBlock` - a component from the theme that shows formatted code.
-
-Check out the component source code for more details on how this works.
